@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ReguCars</string>
+
+    <!-- Titles of each icon -->
+    <string name="icon_home">Inicio</string>
+    <string name="icon_cars">Coches</string>
+    <string name="icon_profile">Perfil</string>
+</resources>
