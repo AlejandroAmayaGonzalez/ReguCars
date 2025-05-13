@@ -16,7 +16,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.aamagon.regucars.ui.navigation.ToolBarRoutes
-import com.aamagon.regucars.ui.screens.HomeScreen
+import com.aamagon.regucars.ui.view.screens.HomeScreen
 import com.aamagon.regucars.ui.screens.MyProfileScreen
 import com.aamagon.regucars.ui.theme.ReguCarsTheme
 import com.aamagon.regucars.ui.view.navigation.MainToolBar

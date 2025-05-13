@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">ReguCars</string>
+    <string name="slogan">Todos tus vehiculos en un solo lugar</string>
 
     <!-- Titles of each icon -->
     <string name="icon_home">Inicio</string>
