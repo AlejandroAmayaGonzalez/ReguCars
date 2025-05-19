@@ -1,0 +1,26 @@
+[
+  {
+    "foto": "https://www.google.com/imgres?q=foto%20de%20perfil&imgurl=https%3A%2F%2Fpreview.redd.it%2Fqm3p4sotkjgd1.jpeg%3Fauto%3Dwebp%26s%3Dd7f8c94f16546eaebfdc292355adf7785b587da5&imgrefurl=https%3A%2F%2Fwww.reddit.com%2Fr%2Fyoutube%2Fcomments%2F1ejibsv%2Fis_this_a_good_pfp%2F%3Ftl%3Des-es&docid=sF8FWaxaRoJe3M&tbnid=eoHvFVNYu918EM&vet=12ahUKEwj8iIjmrq-NAxW4_7sIHSFbHxsQM3oECGMQAA..i&w=1044&h=997&hcb=2&ved=2ahUKEwj8iIjmrq-NAxW4_7sIHSFbHxsQM3oECGMQAA",
+    "apodo": "JuaN90",
+    "correo": "juanps90@ejemplo.com",
+    "nombre": "Juan Pérez Sierra",
+    "fecha_nacimiento": "15/05/1990",
+    "pais": "España"
+  },
+  {
+    "foto": "https://www.google.com/imgres?q=foto%20de%20perfil%20mujer&imgurl=https%3A%2F%2Fimg.freepik.com%2Fvector-premium%2Fretrato-perfil-mujer-labios-rojos_8262-104.jpg&imgrefurl=https%3A%2F%2Fwww.freepik.es%2Fvector-premium%2Fretrato-perfil-mujer-labios-rojos_3818090.htm&docid=cvUxMPXTcbDGpM&tbnid=gOSSiiV2J3ERaM&vet=12ahUKEwjdseGEr6-NAxUX_7sIHT4cM2oQM3oECHIQAA..i&w=626&h=626&hcb=2&ved=2ahUKEwjdseGEr6-NAxUX_7sIHT4cM2oQM3oECHIQAA",
+    "apodo": "maria_2410",
+    "correo": "maria2410@ejemplo.com",
+    "nombre": "María López Caravantes",
+    "fecha_nacimiento": "30/11/1989",
+    "pais": "México"
+  },
+  {
+    "foto": "https://www.google.com/imgres?q=foto%20de%20perfil%20coche&imgurl=https%3A%2F%2Fimg.freepik.com%2Fvector-premium%2Fperfil-coche-dibujos-animados-verde-o-verde-claro-vista-lateral-coche-hatchback_503750-22.jpg&imgrefurl=https%3A%2F%2Fwww.freepik.es%2Fvector-premium%2Fperfil-coche-dibujos-animados-verde-o-verde-claro-vista-lateral-coche-hatchback_32107977.htm&docid=SahFz1T5AURY2M&tbnid=X26lWefQTFxQuM&vet=12ahUKEwi5gaX1rq-NAxXwgP0HHeIWAugQM3oECF0QAA..i&w=626&h=501&hcb=2&ved=2ahUKEwi5gaX1rq-NAxXwgP0HHeIWAugQM3oECF0QAA",
+    "apodo": "CarLover10",
+    "correo": "carloscar@ejemplo.com",
+    "nombre": "Carlos Gómez Planas",
+    "fecha_nacimiento": "16/06/2000",
+    "pais": "Argentina"
+  }
+]
