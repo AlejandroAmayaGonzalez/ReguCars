@@ -44,13 +44,13 @@ fun CarsScreen(navController: NavController){
 @Composable
 fun CarsScreenContent(modifier: Modifier) {
     val list = listOf(
-        Car("Renault Clio",25900,"Gasolina"),
-        Car("Toyota Corolla",18550,"Diésel"),
-        Car("Dacia Sandero",13400,"Eléctrico"),
-        Car("BMW M4",32800,"Eléctrico"),
-        Car("Volkswagen Tiguan",34520,"Gasolina"),
-        Car("Seat Cordoba",10800,"Diésel"),
-        Car("Peugeot 308",27050,"Diésel"),
+        Car("Renault Clio",25900,"Gasolina",2019,listOf("Blanco", "Negro"),""),
+        Car("Toyota Corolla",18550,"Diésel",2013,listOf("Azul"),""),
+        Car("Dacia Sandero",13400,"Eléctrico",2025,listOf("Blanco", "Negro", "Rojo"),""),
+        Car("BMW M4",32800,"Eléctrico",2010,listOf("Blanco", "Negro", "Gris"),""),
+        Car("Volkswagen Tiguan",34520,"Gasolina",2020,listOf("Azul", "Blanco", "Plateado"),""),
+        Car("Seat Cordoba",10800,"Diésel",2006,listOf("Blanco", "Negro"),""),
+        Car("Peugeot 308",27050,"Diésel",2019,listOf("Negro"),""),
     )
 
     LazyColumn (

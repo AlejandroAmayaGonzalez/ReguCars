@@ -6,4 +6,11 @@
     <string name="icon_home">Inicio</string>
     <string name="icon_cars">Coches</string>
     <string name="icon_profile">Perfil</string>
+
+    <!-- Labels for TextFields -->
+    <string name="lbNickname">Nombre de usuario</string>
+    <string name="lbEmail">Correo electrónico</string>
+    <string name="lbName">Nombre y apellidos</string>
+    <string name="lbBirth">Fecha de nacimiento</string>
+    <string name="lbCountry">País</string>
 </resources>
