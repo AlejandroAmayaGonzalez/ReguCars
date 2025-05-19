@@ -1,6 +1,10 @@
 package com.aamagon.regucars.domain.model
 
 data class Profile (
+    val photo: String,
+    val nickname: String,
+    val email: String,
     val name: String,
-    val surname: String
+    val birth: String,
+    val country: String
 )
