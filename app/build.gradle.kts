@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    // Necessary for Room
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -52,6 +54,11 @@ dependencies {
 
     // Compose Navigation
     implementation(libs.androidx.navigation.compose)
+
+    // Hilt
+    implementation (libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+    implementation (libs.hilt.navigation.compose)
 
     // Testing
     testImplementation(libs.junit)
