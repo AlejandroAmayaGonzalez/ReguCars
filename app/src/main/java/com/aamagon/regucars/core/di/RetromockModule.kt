@@ -30,7 +30,7 @@ object RetromockModule {
 
     @Singleton
     @Provides
-    fun provideApiAclient(retromock: Retromock): ApiClient{
+    fun provideApiClient(retromock: Retromock): ApiClient{
         return retromock.create(ApiClient::class.java)
     }
 }
