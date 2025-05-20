@@ -57,6 +57,13 @@ dependencies {
     // Compose Navigation
     implementation(libs.androidx.navigation.compose)
 
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    // Retromock
+    implementation(libs.retromock)
+
     // Hilt
     implementation (libs.hilt.android)
     ksp (libs.hilt.android.compiler)
