@@ -9,12 +9,12 @@ import retrofit2.http.GET
 
 interface ApiClient {
     @Mock
-    @GET(".")
-    @MockResponse(body = "cars.json")
+    @MockResponse(body = "data.json")
+    @GET("/coches")
     suspend fun getCars(): Response<List<CarModel>>
 
     @Mock
-    @GET(".")
-    @MockResponse(body = "users.json")
+    @MockResponse(body = "data.json")
+    @GET("/usuarios")
     suspend fun getUsers(): Response<List<UserModel>>
 }

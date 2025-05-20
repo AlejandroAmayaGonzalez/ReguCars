@@ -3,6 +3,7 @@ package com.aamagon.regucars.core.di
 import android.content.Context
 import co.infinum.retromock.Retromock
 import com.aamagon.regucars.core.bodyFactory.AssetsBodyFactory
+import com.aamagon.regucars.data.network.ApiClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,12 +16,11 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object RetromockModule {
 
-    @Cars
     @Singleton
     @Provides
     fun provideCarsRetromock(
         @ApplicationContext context: Context,
-        @Cars retrofit: Retrofit
+        retrofit: Retrofit
     ): Retromock{
         return Retromock.Builder()
             .retrofit(retrofit)
@@ -28,16 +28,9 @@ object RetromockModule {
             .build()
     }
 
-    @Users
     @Singleton
     @Provides
-    fun provideUsersRetromock(
-        @ApplicationContext context: Context,
-        @Users retrofit: Retrofit
-    ): Retromock{
-        return Retromock.Builder()
-            .retrofit(retrofit)
-            .defaultBodyFactory(AssetsBodyFactory(context.assets::open))
-            .build()
+    fun provideApiAclient(retromock: Retromock): ApiClient{
+        return retromock.create(ApiClient::class.java)
     }
 }

@@ -12,22 +12,11 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object RetrofitModule {
 
-    @Cars
     @Singleton
     @Provides
     fun provideCarsRetrofit(): Retrofit{
         return Retrofit.Builder()
-            .baseUrl("https://d869b751-7eb6-44b9-8db5-33f51b4f1d7a.mock.pstmn.io/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
-
-    @Users
-    @Singleton
-    @Provides
-    fun provideUsersRetrofit(): Retrofit{
-        return Retrofit.Builder()
-            .baseUrl("https://d869b751-7eb6-44b9-8db5-33f51b4f1d7a.mock.pstmn.io/")
+            .baseUrl("https://mock.api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
