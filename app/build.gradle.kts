@@ -64,6 +64,11 @@ dependencies {
     // Retromock
     implementation(libs.retromock)
 
+    // ViewModel and LiveData
+    implementation(libs.androidx.lifecycle.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx.v290)
+
     // Hilt
     implementation (libs.hilt.android)
     ksp (libs.hilt.android.compiler)
