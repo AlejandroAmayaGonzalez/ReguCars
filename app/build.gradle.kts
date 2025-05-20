@@ -4,6 +4,8 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     // Necessary for Room
     id("com.google.devtools.ksp")
+    // Necessary for hilt
+    alias (libs.plugins.hilt.application)
 }
 
 android {
@@ -12,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId = "com.aamagon.regucars"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -57,8 +59,13 @@ dependencies {
 
     // Hilt
     implementation (libs.hilt.android)
-    ksp(libs.hilt.android.compiler)
+    ksp (libs.hilt.android.compiler)
     implementation (libs.hilt.navigation.compose)
+
+    // Room
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
 
     // Testing
     testImplementation(libs.junit)
