@@ -14,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -21,27 +22,38 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.aamagon.regucars.R
+import com.aamagon.regucars.domain.model.User
 import com.aamagon.regucars.ui.theme.AppPadding
 import com.aamagon.regucars.ui.theme.Black
 import com.aamagon.regucars.ui.theme.White
 import com.aamagon.regucars.ui.view.navigation.MainToolBar
 import com.aamagon.regucars.ui.view.navigation.ToolbarTitle
+import com.aamagon.regucars.ui.viewmodel.UserViewModel
 
 @Composable
-fun MyProfileScreen(navController: NavController){
+fun MyProfileScreen(navController: NavController, userViewModel: UserViewModel){
     Scaffold (
         topBar = { ToolbarTitle(navController) },
         bottomBar = { MainToolBar(navController) },
         modifier = Modifier.fillMaxSize()
     ) { innerPadding ->
-        MyProfileScreenContent(modifier = Modifier.padding(innerPadding))
+        MyProfileScreenContent(
+            userViewModel = userViewModel,
+            modifier = Modifier.padding(innerPadding)
+        )
     }
 }
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun MyProfileScreenContent(modifier: Modifier) {
+fun MyProfileScreenContent(
+    userViewModel: UserViewModel,
+    modifier: Modifier
+) {
+    // Access to user fields
+    val user = userViewModel.user.observeAsState(User("","","","","",""))
+
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier.padding(AppPadding.default).fillMaxSize()
@@ -54,11 +66,11 @@ fun MyProfileScreenContent(modifier: Modifier) {
 
         Spacer( modifier = Modifier.height(20.dp) )
 
-        ProfileTextField(stringResource(R.string.lbNickname), "Regu95")
-        ProfileTextField(stringResource(R.string.lbEmail), "example@gmail.com")
-        ProfileTextField(stringResource(R.string.lbName), "Alejandro Amaya")
-        ProfileTextField(stringResource(R.string.lbBirth), "10/07/2004")
-        ProfileTextField(stringResource(R.string.lbCountry), "España")
+        ProfileTextField(stringResource(R.string.lbNickname), user.value.nickname)
+        ProfileTextField(stringResource(R.string.lbEmail), user.value.email)
+        ProfileTextField(stringResource(R.string.lbName), user.value.name)
+        ProfileTextField(stringResource(R.string.lbBirth), user.value.birth)
+        ProfileTextField(stringResource(R.string.lbCountry), user.value.country)
     }
 }
 
