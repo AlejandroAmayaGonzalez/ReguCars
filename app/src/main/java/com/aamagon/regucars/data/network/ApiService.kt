@@ -12,15 +12,15 @@ class ApiService @Inject constructor(
 
     suspend fun getCars(): List<CarModel>{
         return withContext(Dispatchers.IO) {
-            val response = api.getCars()
-            response.body() ?: emptyList()
+            val response = api.getData()
+            response.body()?.cars ?: emptyList()
         }
     }
 
     suspend fun getUsers(): List<UserModel>{
         return withContext(Dispatchers.IO) {
-            val response = api.getUsers()
-            response.body() ?: emptyList()
+            val response = api.getData()
+            response.body()?.users ?: emptyList()
         }
     }
 }
