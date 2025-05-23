@@ -57,6 +57,9 @@ dependencies {
     // Compose Navigation
     implementation(libs.androidx.navigation.compose)
 
+    // Coil: Transform URLs into images
+    implementation(libs.coil.compose)
+
     // Retrofit
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
