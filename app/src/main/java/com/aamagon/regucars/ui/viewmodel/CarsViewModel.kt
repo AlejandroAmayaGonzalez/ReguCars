@@ -18,13 +18,20 @@ class CarsViewModel @Inject constructor(
     private val _carList = MutableLiveData<List<Car>>()
     val carList: LiveData<List<Car>> = _carList
 
+    private val _isloading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isloading
+
     init {
         viewModelScope.launch {
+            _isloading.postValue(true)
+
             val result = getCarsUseCase()
 
             if (result.isNotEmpty()){
                 _carList.postValue(result)
             }
+
+            _isloading.postValue(false)
         }
     }
 }
