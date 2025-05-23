@@ -22,8 +22,10 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
 import com.aamagon.regucars.R
 import com.aamagon.regucars.domain.model.Car
 import com.aamagon.regucars.ui.theme.AppPadding
@@ -87,10 +89,10 @@ fun CarCard(car: Car){
             modifier = Modifier.fillMaxSize()
         ) {
             Box ( modifier = Modifier.height(def) ) {
-                Image(
-                    painter = painterResource(R.drawable.icon_cars),
+                AsyncImage(
+                    model = car.photo,
                     contentDescription = null,
-                    modifier = Modifier.width(def).height(def)
+                    modifier = Modifier.height(def)
                 )
             }
             Box ( modifier = Modifier.weight(0.4f).height(def) ) {
@@ -99,9 +101,13 @@ fun CarCard(car: Car){
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.fillMaxSize()
                 ) {
-                    Text( text = car.model )
+                    Text(
+                        text = car.model,
+                        textAlign = TextAlign.Center
+                    )
+                    Spacer( modifier = Modifier.height(10.dp) )
                     Text( text = "${car.price}€" )
-                    Text( text = car.fuelType )
+                    //Text( text = car.fuelType )
                 }
             }
             Box (
