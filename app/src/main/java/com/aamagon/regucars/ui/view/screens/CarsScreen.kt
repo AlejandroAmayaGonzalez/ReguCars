@@ -18,6 +18,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -42,7 +43,9 @@ fun CarsScreen(navController: NavController, carsViewModel: CarsViewModel){
             modifier = Modifier.padding(innerPadding)
         )
 
-        if (carsViewModel.isLoading.value == true){
+        var loading = carsViewModel.isLoading.observeAsState(false)
+
+        if (loading.value){
             Column (
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center,
@@ -62,10 +65,12 @@ fun CarsScreenContent(
     carsViewModel: CarsViewModel,
     modifier: Modifier) {
 
+    val carList = carsViewModel.carList.observeAsState(emptyList())
+
     LazyColumn (
         modifier = modifier.padding(AppPadding.default)
     ) {
-        items(carsViewModel.carList.value ?: emptyList()){ car ->
+        items(carList.value){ car ->
             CarCard(car)
             Spacer( modifier = Modifier.height(AppPadding.default) )
         }
