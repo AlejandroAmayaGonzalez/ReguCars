@@ -1,6 +1,7 @@
 package com.aamagon.regucars.ui.view.navigation
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -63,7 +64,8 @@ fun ToolBarIcon(
     contentDesc: Int
 ){
     Column (
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.clickable(onClick = { navigate() })
     ) {
         IconButton( onClick = { navigate() } ) {
             Image(
