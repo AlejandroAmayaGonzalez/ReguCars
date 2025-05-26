@@ -10,18 +10,22 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -73,29 +77,27 @@ fun CarsScreenContent(
         modifier = modifier.padding(AppPadding.default)
     ) {
         items(carList.value){ car ->
-            CarCard(car)
+            CarCard(car, carsViewModel.formattedPrice(car.price))
             Spacer( modifier = Modifier.height(AppPadding.default) )
         }
     }
 }
 
 @Composable
-fun CarCard(car: Car){
-    val def = 100.dp
-
+fun CarCard(car: Car, formattedPrice: String){
     Card {
         Row (
             horizontalArrangement = Arrangement.SpaceAround,
             modifier = Modifier.fillMaxSize()
         ) {
-            Box ( modifier = Modifier.height(def) ) {
+            Box ( modifier = Modifier.height(AppPadding.sizeIcon) ) {
                 AsyncImage(
                     model = car.photo,
                     contentDescription = null,
-                    modifier = Modifier.height(def)
+                    modifier = Modifier.height(AppPadding.sizeIcon)
                 )
             }
-            Box ( modifier = Modifier.weight(0.4f).height(def) ) {
+            Box ( modifier = Modifier.weight(0.4f).height(AppPadding.sizeIcon) ) {
                 Column (
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -106,19 +108,41 @@ fun CarCard(car: Car){
                         textAlign = TextAlign.Center
                     )
                     Spacer( modifier = Modifier.height(10.dp) )
-                    Text( text = "${car.price}€" )
-                    //Text( text = car.fuelType )
+                    Text( text = "${formattedPrice}€" )
                 }
             }
             Box (
-                modifier = Modifier.weight(0.2f).height(def)
+                modifier = Modifier.weight(0.25f).height(AppPadding.sizeIcon)
             ){
-                Image(
-                    painter = painterResource(R.drawable.arrow_more),
-                    contentDescription = null,
-                    modifier = Modifier.width(25.dp).height(25.dp).align(Alignment.Center)
-                )
+                Row (
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceAround,
+                    modifier = Modifier.fillMaxSize().align(Alignment.Center)
+                ){
+                    FavToggleButton(car.isFavourite)
+
+                    Image(
+                        painter = painterResource(R.drawable.arrow_more),
+                        contentDescription = null,
+                        modifier = Modifier.size(25.dp)
+                    )
+                }
             }
         }
+    }
+}
+
+@Composable
+fun FavToggleButton(favState: Boolean){
+    var isPressed = remember { mutableStateOf(favState) }
+    val fav = R.drawable.icon_fav_filled_red
+    val notFav = R.drawable.icon_fav_not_filled
+
+    IconButton( onClick = { isPressed.value = !isPressed.value } ) {
+        Image(
+            painter = painterResource(if (isPressed.value) fav else notFav),
+            contentDescription = stringResource(if (isPressed.value) R.string.addFav else R.string.delFav),
+            modifier = Modifier.size(25.dp)
+        )
     }
 }

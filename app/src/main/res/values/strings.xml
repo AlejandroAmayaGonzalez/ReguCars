@@ -8,6 +8,8 @@
     <string name="icon_profile">Perfil</string>
     <string name="icon_fav">Favoritos</string>
     <string name="icon_filter">Filtros</string>
+    <string name="addFav">Añadir favoritos</string>
+    <string name="delFav">Eliminar favoritos</string>
 
     <!-- Labels for TextFields -->
     <string name="lbNickname">Nombre de usuario</string>

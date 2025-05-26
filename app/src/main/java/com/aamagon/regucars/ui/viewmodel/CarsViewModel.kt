@@ -8,6 +8,8 @@ import com.aamagon.regucars.domain.GetCarsUseCase
 import com.aamagon.regucars.domain.model.Car
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import java.text.NumberFormat
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
@@ -33,5 +35,10 @@ class CarsViewModel @Inject constructor(
 
             _isloading.postValue(false)
         }
+    }
+
+    // Formatted price using "."
+    fun formattedPrice(price: Int): String {
+        return NumberFormat.getInstance(Locale.GERMANY).format(price)
     }
 }
