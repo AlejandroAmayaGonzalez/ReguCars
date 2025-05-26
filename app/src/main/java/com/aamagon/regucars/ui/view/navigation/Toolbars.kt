@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
@@ -21,12 +22,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.aamagon.regucars.R
 import com.aamagon.regucars.ui.navigation.ToolBarRoutes
+import com.aamagon.regucars.ui.theme.AppPadding
 
 @Composable
 fun MainToolBar(navController: NavController){
@@ -71,7 +72,7 @@ fun ToolBarIcon(
             Image(
                 painter = painterResource(icon),
                 contentDescription = stringResource(contentDesc),
-                modifier = Modifier.height(100.dp).width(100.dp)
+                modifier = Modifier.height(AppPadding.sizeIcon).width(AppPadding.sizeIcon)
             )
         }
 
@@ -95,12 +96,46 @@ fun ToolbarTitle(navController: NavController){
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun CarsToolbar(navController: NavController){
+    TopAppBar(
+        title = {
+            val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
+            Text(
+                text = getTitle(currentRoute),
+                fontWeight = FontWeight.Bold,
+                fontSize = 40.sp
+            )
+        },
+        actions = {
+            IconButton( onClick = { } ) {
+                Image(
+                    painter = painterResource(R.drawable.icon_fav_filled_black),
+                    contentDescription = stringResource(R.string.icon_fav),
+                    modifier = Modifier.height(AppPadding.sizeIcon).width(AppPadding.sizeIcon)
+                )
+            }
+            Spacer(modifier = Modifier.width(AppPadding.default))
+            IconButton( onClick = { } ) {
+                Image(
+                    painter = painterResource(R.drawable.icon_filter),
+                    contentDescription = stringResource(R.string.icon_filter),
+                    modifier = Modifier.height(AppPadding.sizeIcon).width(AppPadding.sizeIcon)
+                )
+            }
+        },
+        colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.LightGray)
+    )
+}
+
 @Composable
 fun getTitle(route: String?): String {
     return when (route){
         "Inicio" -> stringResource(R.string.icon_home)
         "Coches" -> stringResource(R.string.icon_cars)
         "MiPerfil" -> stringResource(R.string.icon_profile)
+        "Filtros" -> stringResource(R.string.icon_filter)
         else -> "App"
     }
 }

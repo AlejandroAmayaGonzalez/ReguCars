@@ -29,14 +29,14 @@ import coil.compose.AsyncImage
 import com.aamagon.regucars.R
 import com.aamagon.regucars.domain.model.Car
 import com.aamagon.regucars.ui.theme.AppPadding
+import com.aamagon.regucars.ui.view.navigation.CarsToolbar
 import com.aamagon.regucars.ui.view.navigation.MainToolBar
-import com.aamagon.regucars.ui.view.navigation.ToolbarTitle
 import com.aamagon.regucars.ui.viewmodel.CarsViewModel
 
 @Composable
 fun CarsScreen(navController: NavController, carsViewModel: CarsViewModel){
     Scaffold (
-        topBar = { ToolbarTitle(navController) },
+        topBar = { CarsToolbar(navController) },
         bottomBar = { MainToolBar(navController) },
         modifier = Modifier.fillMaxSize()
     ) { innerPadding ->
