@@ -13,5 +13,6 @@ data class CarEntity (
     @ColumnInfo(name = "fuel_type") val fuelType: String,
     @ColumnInfo(name = "year") val year: Int,
     @ColumnInfo(name = "colors") val colors: List<String>,
-    @ColumnInfo(name = "photo") val photo: String
+    @ColumnInfo(name = "photo") val photo: String,
+    @ColumnInfo(name = "favourite") val isFavourite: Boolean
 )

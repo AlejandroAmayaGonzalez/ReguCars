@@ -8,5 +8,6 @@ data class CarModel (
     @SerializedName("combustible") val fuelType: String,
     @SerializedName("año") val year: Int,
     @SerializedName("colores") val colors: List<String>,
-    @SerializedName("foto") val photo: String
+    @SerializedName("foto") val photo: String,
+    @SerializedName("favorito") val isFavourite: Boolean
 )

@@ -6,5 +6,6 @@ data class Car (
     val fuelType: String,
     val year: Int,
     val colors: List<String>,
-    val photo: String
+    val photo: String,
+    val isFavourite: Boolean
 )

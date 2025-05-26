@@ -8,11 +8,11 @@ import com.aamagon.regucars.domain.model.Car
 import com.aamagon.regucars.domain.model.User
 
 // Data model to Domain
-fun CarModel.toDomain() = Car(model, price, fuelType, year, colors, photo)
+fun CarModel.toDomain() = Car(model, price, fuelType, year, colors, photo, isFavourite)
 fun UserModel.toDomain() = User(photo, nickname, email, name, birth, country)
 
 // Entities to Domain
-fun CarEntity.toDomain() = Car(model, price, fuelType, year, colors, photo)
+fun CarEntity.toDomain() = Car(model, price, fuelType, year, colors, photo, isFavourite)
 fun UserEntity.toDomain() = User(photo, nickname, email, name, birth, country)
 
 // Domain to Entity
@@ -24,7 +24,8 @@ fun Car.toEntity(id: Int): CarEntity {
         fuelType = fuelType,
         year = year,
         colors = colors,
-        photo = photo
+        photo = photo,
+        isFavourite = isFavourite
     )
 }
 

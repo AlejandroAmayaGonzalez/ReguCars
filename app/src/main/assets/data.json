@@ -6,7 +6,8 @@
       "combustible": "Gasolina",
       "año": 2019,
       "colores": ["Rojo", "Blanco", "Gris"],
-      "foto": "https://www.km77.com/images/medium/1/7/3/7/mediana-1.341737.jpg"
+      "foto": "https://www.km77.com/images/medium/1/7/3/7/mediana-1.341737.jpg",
+      "favorito": false
     },
     {
       "modelo": "Audi TT Coupé",
@@ -14,7 +15,8 @@
       "combustible": "Gasolina",
       "año": 2020,
       "colores": ["Negro", "Azul"],
-      "foto": "https://soymotor.com/sites/default/files/imagenes/noticia/audi-tts-competition-principal-2-soymotor.jpg"
+      "foto": "https://soymotor.com/sites/default/files/imagenes/noticia/audi-tts-competition-principal-2-soymotor.jpg",
+      "favorito": false
     },
     {
       "modelo": "Ford Focus",
@@ -22,7 +24,8 @@
       "combustible": "Diésel",
       "año": 2015,
       "colores": ["Rojo", "Azul", "Amarillo"],
-      "foto": "https://images.coches.com/_news_/2014/02/Ford-Focus-2014-00-650x397.jpg"
+      "foto": "https://images.coches.com/_news_/2014/02/Ford-Focus-2014-00-650x397.jpg",
+      "favorito": false
     },
     {
       "modelo": "Volkswagen Touran",
@@ -30,7 +33,8 @@
       "combustible": "Diésel",
       "año": 2006,
       "colores": ["Gris", "Negro"],
-      "foto": "https://www.cataloge.eu/media/volkswagen/35/el/volkswagen-vw-touran-1t-facelift-2006.jpg"
+      "foto": "https://www.cataloge.eu/media/volkswagen/35/el/volkswagen-vw-touran-1t-facelift-2006.jpg",
+      "favorito": false
     },
     {
       "modelo": "BMW 530e",
@@ -38,7 +42,8 @@
       "combustible": "Híbrido",
       "año": 2018,
       "colores": ["Plateado", "Blanco"],
-      "foto": "https://www.autopista.es/uploads/s1/44/64/07/5/imagegallery-50388-59d4983aa0ab2.jpeg"
+      "foto": "https://www.autopista.es/uploads/s1/44/64/07/5/imagegallery-50388-59d4983aa0ab2.jpeg",
+      "favorito": false
     },
     {
       "modelo": "Seat Córdoba",
@@ -46,7 +51,8 @@
       "combustible": "Gasolina",
       "año": 2009,
       "colores": ["Blanco", "Gris"],
-      "foto": "https://www.km77.com/media/fotos/seat_cordoba_2006_2195_2.jpg"
+      "foto": "https://www.km77.com/media/fotos/seat_cordoba_2006_2195_2.jpg",
+      "favorito": false
     },
     {
       "modelo": "Renault Clio",
@@ -54,7 +60,8 @@
       "combustible": "Diésel",
       "año": 2014,
       "colores": ["Amarillo", "Azul", "Negro"],
-      "foto": "https://carsguide-res.cloudinary.com/image/upload/f_auto,fl_lossy,q_auto,t_default/v1/editorial/renault-cio-4-expression-d.jpg"
+      "foto": "https://carsguide-res.cloudinary.com/image/upload/f_auto,fl_lossy,q_auto,t_default/v1/editorial/renault-cio-4-expression-d.jpg",
+      "favorito": false
     },
     {
       "modelo": "Ford Escape Hybrid",
@@ -62,7 +69,8 @@
       "combustible": "Híbrido",
       "año": 2023,
       "colores": ["Azul", "Blanco"],
-      "foto": "https://www.vdm.ford.com/content/dam/na/ford/en_us/images/escape/2025/jellybeans/2025-Escape-Plug-in-Hybrid-Right.png"
+      "foto": "https://www.vdm.ford.com/content/dam/na/ford/en_us/images/escape/2025/jellybeans/2025-Escape-Plug-in-Hybrid-Right.png",
+      "favorito": false
     },
     {
       "modelo": "Nissan Leaf",
@@ -70,7 +78,8 @@
       "combustible": "Eléctrico",
       "año": 2016,
       "colores": ["Azul", "Rojo", "Blanco", "Negro"],
-      "foto": "https://www.autopista.es/uploads/s1/57/14/29/0/article-nissan-leaf-2016-nueva-bateria-mas-autonomia-104814-55f1782d39f4d.jpeg"
+      "foto": "https://www.autopista.es/uploads/s1/57/14/29/0/article-nissan-leaf-2016-nueva-bateria-mas-autonomia-104814-55f1782d39f4d.jpeg",
+      "favorito": false
     }
   ],
   "usuarios": [
