@@ -135,7 +135,7 @@ fun CarCard(car: Car, formattedPrice: String){
 
 @Composable
 fun FavToggleButton(favState: Boolean){
-    var isPressed = remember { mutableStateOf(favState) }
+    var isPressed = remember(favState) { mutableStateOf(favState) }
     val fav = R.drawable.icon_fav_filled_red
     val notFav = R.drawable.icon_fav_not_filled
 
