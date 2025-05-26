@@ -16,4 +16,7 @@ interface CarDao {
 
     @Query("DELETE FROM car_table")
     suspend fun deleteCars()
+
+    @Query("SELECT * FROM car_table WHERE favourite = 1")
+    suspend fun getFavCars(): List<CarEntity>
 }

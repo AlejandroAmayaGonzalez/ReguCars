@@ -34,10 +34,12 @@ class Repository @Inject constructor(
     }
 
     suspend fun getUsersFromDatabase(): List<User> {
-        val response = userDao.getAllUsers()
+        return userDao.getAllUsers().map { it.toDomain() }
+    }
 
-        // Map the entities to domain model and return it
-        return response.map { it.toDomain() }
+    // Return the cars with the favourite field true
+    suspend fun getFavCars(): List<Car> {
+        return carDao.getFavCars().map { it.toDomain() }
     }
 
     // Insert in tables
