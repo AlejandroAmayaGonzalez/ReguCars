@@ -23,6 +23,7 @@ import com.aamagon.regucars.ui.view.screens.MyProfileScreen
 import com.aamagon.regucars.ui.theme.ReguCarsTheme
 import com.aamagon.regucars.ui.view.navigation.MainToolBar
 import com.aamagon.regucars.ui.view.screens.CarsScreen
+import com.aamagon.regucars.ui.view.screens.States
 import com.aamagon.regucars.ui.viewmodel.CarsViewModel
 import com.aamagon.regucars.ui.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -58,6 +59,7 @@ fun MainApp(
 ){
 
     val navController = rememberNavController()
+    val states = States()
 
     Scaffold (
         bottomBar = { MainToolBar(navController) },
@@ -68,7 +70,7 @@ fun MainApp(
             ) {
                 composable(route = ToolBarRoutes.HomeScreen.route) { HomeScreen(navController) }
                 composable(route = ToolBarRoutes.CarsScreen.route) {
-                    CarsScreen(navController, carsViewModel)
+                    CarsScreen(navController, carsViewModel, states)
                 }
                 composable(route = ToolBarRoutes.MyProfileScreen.route) {
                     MyProfileScreen(navController, userViewModel)

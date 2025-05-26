@@ -38,9 +38,9 @@ import com.aamagon.regucars.ui.view.navigation.MainToolBar
 import com.aamagon.regucars.ui.viewmodel.CarsViewModel
 
 @Composable
-fun CarsScreen(navController: NavController, carsViewModel: CarsViewModel){
+fun CarsScreen(navController: NavController, carsViewModel: CarsViewModel, states: States){
     Scaffold (
-        topBar = { CarsToolbar(navController) },
+        topBar = { CarsToolbar(navController, carsViewModel, states) },
         bottomBar = { MainToolBar(navController) },
         modifier = Modifier.fillMaxSize()
     ) { innerPadding ->
@@ -69,7 +69,8 @@ fun CarsScreen(navController: NavController, carsViewModel: CarsViewModel){
 @Composable
 fun CarsScreenContent(
     carsViewModel: CarsViewModel,
-    modifier: Modifier) {
+    modifier: Modifier
+) {
 
     val carList = carsViewModel.carList.observeAsState(emptyList())
 

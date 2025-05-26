@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -22,12 +23,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.aamagon.regucars.R
 import com.aamagon.regucars.ui.navigation.ToolBarRoutes
 import com.aamagon.regucars.ui.theme.AppPadding
+import com.aamagon.regucars.ui.view.screens.States
+import com.aamagon.regucars.ui.viewmodel.CarsViewModel
 
 @Composable
 fun MainToolBar(navController: NavController){
@@ -98,7 +102,7 @@ fun ToolbarTitle(navController: NavController){
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CarsToolbar(navController: NavController){
+fun CarsToolbar(navController: NavController, carsViewModel: CarsViewModel, states: States){
     TopAppBar(
         title = {
             val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
@@ -109,13 +113,7 @@ fun CarsToolbar(navController: NavController){
             )
         },
         actions = {
-            IconButton( onClick = { } ) {
-                Image(
-                    painter = painterResource(R.drawable.icon_fav_filled_black),
-                    contentDescription = stringResource(R.string.icon_fav),
-                    modifier = Modifier.height(AppPadding.sizeIcon).width(AppPadding.sizeIcon)
-                )
-            }
+            FavToggleButton(carsViewModel, states)
             Spacer(modifier = Modifier.width(AppPadding.default))
             IconButton( onClick = { } ) {
                 Image(
@@ -137,5 +135,27 @@ fun getTitle(route: String?): String {
         "MiPerfil" -> stringResource(R.string.icon_profile)
         "Filtros" -> stringResource(R.string.icon_filter)
         else -> "App"
+    }
+}
+
+@Composable
+fun FavToggleButton(carsViewModel: CarsViewModel, states: States){
+
+    val fav = R.drawable.icon_fav_filled_red
+    val notFav = R.drawable.icon_fav_not_filled
+
+    IconButton(
+        // Change between favourites list and all cars list
+        onClick = {
+            states.showFavs.value = states.showFavs.value != true
+            carsViewModel.showAList(states.showFavs.value)
+        }
+    ) {
+        Image(
+            painter = painterResource(if (states.showFavs.value) fav else notFav),
+            contentDescription = stringResource(
+                if (states.showFavs.value) R.string.addFav else R.string.delFav),
+            modifier = Modifier.size(25.dp)
+        )
     }
 }
