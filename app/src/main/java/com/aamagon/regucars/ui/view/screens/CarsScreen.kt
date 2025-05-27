@@ -2,6 +2,7 @@ package com.aamagon.regucars.ui.view.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -33,7 +34,8 @@ import coil.compose.AsyncImage
 import com.aamagon.regucars.R
 import com.aamagon.regucars.core.extensions.formatPrice
 import com.aamagon.regucars.domain.model.Car
-import com.aamagon.regucars.ui.theme.AppPadding
+import com.aamagon.regucars.ui.theme.Dimensions
+import com.aamagon.regucars.ui.view.dialogs.CarDialog
 import com.aamagon.regucars.ui.view.navigation.CarsToolbar
 import com.aamagon.regucars.ui.view.navigation.MainToolBar
 import com.aamagon.regucars.ui.viewmodel.CarsViewModel
@@ -76,30 +78,34 @@ fun CarsScreenContent(
     val carList = carsViewModel.carList.observeAsState(emptyList())
 
     LazyColumn (
-        modifier = modifier.padding(AppPadding.default)
+        modifier = modifier.padding(Dimensions.default)
     ) {
         items(carList.value){ car ->
             CarCard(car, carsViewModel)
-            Spacer( modifier = Modifier.height(AppPadding.default) )
+            Spacer( modifier = Modifier.height(Dimensions.default) )
         }
     }
 }
 
 @Composable
 fun CarCard(car: Car, carsViewModel: CarsViewModel){
-    Card {
+    var show = remember { mutableStateOf(false) }
+
+    Card (
+        modifier = Modifier.clickable( onClick = { show.value = true } )
+    ) {
         Row (
             horizontalArrangement = Arrangement.SpaceAround,
             modifier = Modifier.fillMaxSize()
         ) {
-            Box ( modifier = Modifier.height(AppPadding.sizeIcon) ) {
+            Box ( modifier = Modifier.height(Dimensions.cardHeight) ) {
                 AsyncImage(
                     model = car.photo,
-                    contentDescription = null,
-                    modifier = Modifier.height(AppPadding.sizeIcon)
+                    contentDescription = car.model,
+                    modifier = Modifier.height(Dimensions.cardHeight)
                 )
             }
-            Box ( modifier = Modifier.weight(0.4f).height(AppPadding.sizeIcon) ) {
+            Box ( modifier = Modifier.weight(0.4f).height(Dimensions.cardHeight) ) {
                 Column (
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -110,11 +116,11 @@ fun CarCard(car: Car, carsViewModel: CarsViewModel){
                         textAlign = TextAlign.Center
                     )
                     Spacer( modifier = Modifier.height(10.dp) )
-                    Text( text = "${car.price.formatPrice()}€" )
+                    Text( text = car.price.formatPrice())
                 }
             }
             Box (
-                modifier = Modifier.weight(0.25f).height(AppPadding.sizeIcon)
+                modifier = Modifier.weight(0.25f).height(Dimensions.cardHeight)
             ){
                 Row (
                     verticalAlignment = Alignment.CenterVertically,
@@ -132,6 +138,8 @@ fun CarCard(car: Car, carsViewModel: CarsViewModel){
             }
         }
     }
+
+    CarDialog(show.value, car) { show.value = false }
 }
 
 @Composable

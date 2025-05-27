@@ -17,4 +17,16 @@
     <string name="lbName">Nombre y apellidos</string>
     <string name="lbBirth">Fecha de nacimiento</string>
     <string name="lbCountry">País</string>
+
+    <!-- Strings for CarDialog -->
+    <string name="dismissButton">Cerrar</string>
+    <string name="titleDialog">Información sobre:\n</string>
+    <string name="model">Modelo: </string>
+    <string name="price">Precio: </string>
+    <string name="year">Año: </string>
+    <string name="fuelType">Tipo combustible: </string>
+    <string name="colors">Colores: </string>
+    <string name="isFav">Esta en favoritos: </string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
 </resources>
