@@ -73,12 +73,39 @@
       "favorito": false
     },
     {
+      "modelo": "Citroën C5 Aircross",
+      "precio": 30775,
+      "combustible": "Híbrido",
+      "año": 2023,
+      "colores": ["Plateado", "Blanco"],
+      "foto": "https://carnovo.com/wp-content/uploads/2023/09/citroen-c5-aircross-hybrid.jpg",
+      "favorito": false
+    },
+    {
+      "modelo": "Mini Cooper S",
+      "precio": 36970,
+      "combustible": "Eléctrico",
+      "año": 2023,
+      "colores": ["Rojo", "Azul", "Verde"],
+      "foto": "https://www.km77.com/media/fotos/mini_mini_clubman_2019_clubman_7140_1.jpg",
+      "favorito": false
+    },
+    {
       "modelo": "Nissan Leaf",
       "precio": 29070,
       "combustible": "Eléctrico",
       "año": 2016,
       "colores": ["Azul", "Rojo", "Blanco", "Negro"],
       "foto": "https://www.autopista.es/uploads/s1/57/14/29/0/article-nissan-leaf-2016-nueva-bateria-mas-autonomia-104814-55f1782d39f4d.jpeg",
+      "favorito": false
+    },
+    {
+      "modelo": "Mercedes CLS 320",
+      "precio": 98520,
+      "combustible": "Diésel",
+      "año": 2025,
+      "colores": ["Gris", "Negro", "Blanco"],
+      "foto": "https://i.bstr.es/topventas/2020/03/Mercedes-Benz-CLS-2019-1280-01.jpg",
       "favorito": false
     }
   ],
