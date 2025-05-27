@@ -1,6 +1,7 @@
 package com.aamagon.regucars.data
 
 import com.aamagon.regucars.core.extensions.toDomain
+import com.aamagon.regucars.core.extensions.toEntity
 import com.aamagon.regucars.data.database.dao.CarDao
 import com.aamagon.regucars.data.database.dao.UserDao
 import com.aamagon.regucars.data.database.entities.CarEntity
@@ -41,6 +42,9 @@ class Repository @Inject constructor(
     suspend fun getFavCars(): List<Car> {
         return carDao.getFavCars().map { it.toDomain() }
     }
+
+    // Update cars to mark it as favourite
+    suspend fun updateCar(id: Int, car: Car) = carDao.updateCar(car.toEntity(id))
 
     // Insert in tables
     suspend fun insertCars(cars: List<CarEntity>) = carDao.insertAllCars(cars)

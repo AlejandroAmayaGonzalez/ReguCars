@@ -7,5 +7,5 @@ data class Car (
     val year: Int,
     val colors: List<String>,
     val photo: String,
-    val isFavourite: Boolean
+    var isFavourite: Boolean
 )

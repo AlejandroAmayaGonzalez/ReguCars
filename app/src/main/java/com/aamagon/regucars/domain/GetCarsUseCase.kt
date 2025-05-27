@@ -8,19 +8,21 @@ import javax.inject.Inject
 class GetCarsUseCase @Inject constructor(
     private val repository: Repository
 ) {
+    // First return the data stored in DB. In other case return from API
     suspend operator fun invoke(): List<Car> {
-        val response = repository.getCarsFromApi()
+        val dbResponse = repository.getCarsFromDatabase()
+        val apiResponse = repository.getCarsFromApi()
 
-        return if (response.isNotEmpty()){
+        return if (dbResponse.isNotEmpty() && dbResponse.size == apiResponse.size){
+            dbResponse
+        }else{
             // Clear DB
             repository.clearCars()
 
-            // Insert the returned content
-            repository.insertCars(response.map { it.toEntity(id = response.indexOf(it)) })
+            // Insert
+            repository.insertCars(apiResponse.map { it.toEntity(id = apiResponse.indexOf(it)) })
 
-            response
-        }else{
-            repository.getCarsFromDatabase()
+            apiResponse
         }
     }
 }

@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.aamagon.regucars.R
+import com.aamagon.regucars.core.extensions.formatPrice
 import com.aamagon.regucars.domain.model.Car
 import com.aamagon.regucars.ui.theme.AppPadding
 import com.aamagon.regucars.ui.view.navigation.CarsToolbar
@@ -78,14 +79,14 @@ fun CarsScreenContent(
         modifier = modifier.padding(AppPadding.default)
     ) {
         items(carList.value){ car ->
-            CarCard(car, carsViewModel.formattedPrice(car.price))
+            CarCard(car, carsViewModel)
             Spacer( modifier = Modifier.height(AppPadding.default) )
         }
     }
 }
 
 @Composable
-fun CarCard(car: Car, formattedPrice: String){
+fun CarCard(car: Car, carsViewModel: CarsViewModel){
     Card {
         Row (
             horizontalArrangement = Arrangement.SpaceAround,
@@ -109,7 +110,7 @@ fun CarCard(car: Car, formattedPrice: String){
                         textAlign = TextAlign.Center
                     )
                     Spacer( modifier = Modifier.height(10.dp) )
-                    Text( text = "${formattedPrice}€" )
+                    Text( text = "${car.price.formatPrice()}€" )
                 }
             }
             Box (
@@ -120,7 +121,7 @@ fun CarCard(car: Car, formattedPrice: String){
                     horizontalArrangement = Arrangement.SpaceAround,
                     modifier = Modifier.fillMaxSize().align(Alignment.Center)
                 ){
-                    FavToggleButton(car.isFavourite)
+                    FavToggleButton(car, carsViewModel)
 
                     Image(
                         painter = painterResource(R.drawable.arrow_more),
@@ -134,12 +135,21 @@ fun CarCard(car: Car, formattedPrice: String){
 }
 
 @Composable
-fun FavToggleButton(favState: Boolean){
-    var isPressed = remember(favState) { mutableStateOf(favState) }
+fun FavToggleButton(car: Car, carsViewModel: CarsViewModel){
+    var isPressed = remember(car.isFavourite) { mutableStateOf(car.isFavourite) }
     val fav = R.drawable.icon_fav_filled_red
     val notFav = R.drawable.icon_fav_not_filled
 
-    IconButton( onClick = { isPressed.value = !isPressed.value } ) {
+    IconButton(
+        onClick = {
+            isPressed.value = !isPressed.value
+            carsViewModel.updateCar(
+                id = (carsViewModel.carList.value?.indexOf(car) ?: 1) + 1,
+                car = car,
+                value = isPressed.value
+            )
+        }
+    ) {
         Image(
             painter = painterResource(if (isPressed.value) fav else notFav),
             contentDescription = stringResource(if (isPressed.value) R.string.addFav else R.string.delFav),

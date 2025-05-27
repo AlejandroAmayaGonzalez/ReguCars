@@ -6,17 +6,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aamagon.regucars.domain.GetCarsUseCase
 import com.aamagon.regucars.domain.GetFavCarsUseCase
+import com.aamagon.regucars.domain.UpdateCarUseCase
 import com.aamagon.regucars.domain.model.Car
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import java.text.NumberFormat
-import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
 class CarsViewModel @Inject constructor(
     private val getCarsUseCase: GetCarsUseCase,
-    private val getFavCarsUseCase: GetFavCarsUseCase
+    private val getFavCarsUseCase: GetFavCarsUseCase,
+    private val updateCarUseCase: UpdateCarUseCase
 ): ViewModel() {
 
     // All cars available
@@ -69,8 +69,11 @@ class CarsViewModel @Inject constructor(
         }
     }
 
-    // Formatted price using "."
-    fun formattedPrice(price: Int): String {
-        return NumberFormat.getInstance(Locale.GERMANY).format(price)
+    // Update DB to mark it as favourite
+    fun updateCar(id: Int, car: Car, value: Boolean) = viewModelScope.launch {
+        _favCars.postValue(getFavCarsUseCase())
+        car.isFavourite = value
+        updateCarUseCase(id, car)
+        _favCars.postValue(getFavCarsUseCase())
     }
 }
