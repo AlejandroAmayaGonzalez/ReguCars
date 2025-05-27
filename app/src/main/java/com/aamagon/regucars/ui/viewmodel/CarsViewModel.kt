@@ -71,7 +71,6 @@ class CarsViewModel @Inject constructor(
 
     // Update DB to mark it as favourite
     fun updateCar(id: Int, car: Car, value: Boolean) = viewModelScope.launch {
-        _favCars.postValue(getFavCarsUseCase())
         car.isFavourite = value
         updateCarUseCase(id, car)
         _favCars.postValue(getFavCarsUseCase())
