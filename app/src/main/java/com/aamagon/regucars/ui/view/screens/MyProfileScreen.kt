@@ -24,7 +24,7 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.aamagon.regucars.R
 import com.aamagon.regucars.domain.model.User
-import com.aamagon.regucars.ui.theme.AppPadding
+import com.aamagon.regucars.ui.theme.Dimensions
 import com.aamagon.regucars.ui.theme.Black
 import com.aamagon.regucars.ui.theme.White
 import com.aamagon.regucars.ui.view.navigation.MainToolBar
@@ -57,7 +57,7 @@ fun MyProfileScreenContent(
 
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier.padding(AppPadding.default).fillMaxSize()
+        modifier = modifier.padding(Dimensions.default).fillMaxSize()
     ){
         AsyncImage(
             model = user.value.photo,

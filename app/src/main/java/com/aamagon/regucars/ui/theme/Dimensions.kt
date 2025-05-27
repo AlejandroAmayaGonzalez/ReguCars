@@ -1,9 +1,14 @@
 package com.aamagon.regucars.ui.theme
 
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
-object AppPadding{
+object Dimensions{
     val default = 16.dp
 
-    val sizeIcon = 100.dp
+    val toolbarIconSize = 100.dp
+    val cardHeight = 100.dp
+
+    val titleDialog = 25.sp
+    val contentDialog = 20.sp
 }

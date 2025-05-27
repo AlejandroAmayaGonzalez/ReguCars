@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.BottomAppBar
@@ -29,7 +28,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.aamagon.regucars.R
 import com.aamagon.regucars.ui.navigation.ToolBarRoutes
-import com.aamagon.regucars.ui.theme.AppPadding
+import com.aamagon.regucars.ui.theme.Dimensions
 import com.aamagon.regucars.ui.view.screens.States
 import com.aamagon.regucars.ui.viewmodel.CarsViewModel
 
@@ -76,7 +75,7 @@ fun ToolBarIcon(
             Image(
                 painter = painterResource(icon),
                 contentDescription = stringResource(contentDesc),
-                modifier = Modifier.height(AppPadding.sizeIcon).width(AppPadding.sizeIcon)
+                modifier = Modifier.size(Dimensions.toolbarIconSize)
             )
         }
 
@@ -114,12 +113,12 @@ fun CarsToolbar(navController: NavController, carsViewModel: CarsViewModel, stat
         },
         actions = {
             FavToggleButton(carsViewModel, states)
-            Spacer(modifier = Modifier.width(AppPadding.default))
+            Spacer(modifier = Modifier.width(Dimensions.default))
             IconButton( onClick = { } ) {
                 Image(
                     painter = painterResource(R.drawable.icon_filter),
                     contentDescription = stringResource(R.string.icon_filter),
-                    modifier = Modifier.height(AppPadding.sizeIcon).width(AppPadding.sizeIcon)
+                    modifier = Modifier.size(Dimensions.toolbarIconSize)
                 )
             }
         },

@@ -21,7 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.aamagon.regucars.R
-import com.aamagon.regucars.ui.theme.AppPadding
+import com.aamagon.regucars.ui.theme.Dimensions
 import com.aamagon.regucars.ui.view.navigation.MainToolBar
 
 @Composable
@@ -52,7 +52,7 @@ fun HomeScreenContent(modifier: Modifier) {
         Column (
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = modifier.fillMaxWidth().padding(AppPadding.default)
+            modifier = modifier.fillMaxWidth().padding(Dimensions.default)
         ) {
             Text(
                 text = stringResource(R.string.app_name),
