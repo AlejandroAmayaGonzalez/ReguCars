@@ -11,4 +11,6 @@ object Dimensions{
 
     val titleDialog = 25.sp
     val contentDialog = 20.sp
+
+    val filterTitle = 20.sp
 }

@@ -29,4 +29,16 @@
     <string name="isFav">Esta en favoritos: </string>
     <string name="yes">Sí</string>
     <string name="no">No</string>
+
+    <!-- Strings for filters -->
+    <string name="fuelFilterTitle">Por tipo de combustible</string>
+    <string name="cbGasoline">Gasolina</string>
+    <string name="cbDiesel">Diésel</string>
+    <string name="cbElectric">Eléctrico</string>
+    <string name="cbHybrid">Híbrido</string>
+
+    <string name="applyFilters">Aplicar filtros</string>
+    <string name="deleteFilters">Elminar filtros</string>
+
+
 </resources>

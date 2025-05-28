@@ -77,7 +77,7 @@ fun MainApp(
                     MyProfileScreen(navController, userViewModel)
                 }
                 composable(route = ToolBarRoutes.FiltersScreen.route) {
-                    FiltersScreen(carsViewModel, states)
+                    FiltersScreen(navController, carsViewModel, states)
                 }
             }
         }
