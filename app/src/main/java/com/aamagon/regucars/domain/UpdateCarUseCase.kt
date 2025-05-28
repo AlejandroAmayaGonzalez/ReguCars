@@ -7,5 +7,5 @@ import javax.inject.Inject
 class UpdateCarUseCase @Inject constructor(
     private val repository: Repository
 ) {
-    suspend operator fun invoke(id: Int, car: Car) = repository.updateCar(id, car)
+    suspend operator fun invoke(car: Car) = repository.updateCar(car)
 }

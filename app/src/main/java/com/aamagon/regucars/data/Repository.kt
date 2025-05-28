@@ -19,7 +19,7 @@ class Repository @Inject constructor(
 
     // Api functions
     suspend fun getCarsFromApi(): List<Car>{
-        return apiService.getCars().map { it.toDomain() }
+        return apiService.getCars().map { it.toDomain(it.id) }
     }
 
     suspend fun getUsersFromApi(): List<User>{
@@ -31,7 +31,7 @@ class Repository @Inject constructor(
         val response = carDao.getAllCars()
 
         // Map the entities to domain model and return it
-        return response.map { it.toDomain() }
+        return response.map { it.toDomain(it.id) }
     }
 
     suspend fun getUsersFromDatabase(): List<User> {
@@ -40,11 +40,11 @@ class Repository @Inject constructor(
 
     // Return the cars with the favourite field true
     suspend fun getFavCars(): List<Car> {
-        return carDao.getFavCars().map { it.toDomain() }
+        return carDao.getFavCars().map { it.toDomain(it.id) }
     }
 
     // Update cars to mark it as favourite
-    suspend fun updateCar(id: Int, car: Car) = carDao.updateCar(car.toEntity(id))
+    suspend fun updateCar(car: Car) = carDao.updateCar(car.toEntity(car.id))
 
     // Insert in tables
     suspend fun insertCars(cars: List<CarEntity>) = carDao.insertAllCars(cars)

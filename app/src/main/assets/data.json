@@ -111,9 +111,17 @@
   ],
   "usuarios": [
     {
+      "foto": "https://static.vecteezy.com/system/resources/previews/029/245/944/non_2x/adobe-illustrator-artwork-vector.jpg",
+      "apodo": "ReGu",
+      "correo": "aamagon@regucars.com",
+      "nombre": "Alejandro Amaya",
+      "fecha_nacimiento": "10/07/2004",
+      "pais": "España"
+    },
+    {
       "foto": "https://previews.123rf.com/images/jemastock/jemastock1706/jemastock170617635/81010404-hombre-de-perfil-ilustraci%C3%B3n-de-vector-de-personaje-de-estilo-de-pelo-joven.jpg",
       "apodo": "Juan90",
-      "correo": "juanps90@ejemplo.com",
+      "correo": "juanps90@regucars.com",
       "nombre": "Juan Pérez Sierra",
       "fecha_nacimiento": "15/05/1990",
       "pais": "España"
@@ -121,7 +129,7 @@
     {
       "foto": "https://img.freepik.com/vector-premium/retrato-perfil-mujer-labios-rojos_8262-104.jpg",
       "apodo": "maria_2410",
-      "correo": "maria2410@ejemplo.com",
+      "correo": "maria2410@regucars.com",
       "nombre": "María López Caravantes",
       "fecha_nacimiento": "30/11/1989",
       "pais": "México"
@@ -129,7 +137,7 @@
     {
       "foto": "https://www.shutterstock.com/image-photo/panoramic-mountain-road-landscape-among-260nw-2461936245.jpg",
       "apodo": "mikeTT",
-      "correo": "miguellopez1@ejemplo.com",
+      "correo": "miguellopez1@regucars.com",
       "nombre": "Miguel González López",
       "fecha_nacimiento": "13/04/2002",
       "pais": "España"
@@ -137,7 +145,7 @@
     {
       "foto": "https://img.freepik.com/vector-premium/perfil-coche-dibujos-animados-verde-o-verde-claro-vista-lateral-coche-hatchback_503750-22.jpg",
       "apodo": "CarLover10",
-      "correo": "carloscar@ejemplo.com",
+      "correo": "carloscar@regucars.com",
       "nombre": "Carlos Gómez Planas",
       "fecha_nacimiento": "16/06/2000",
       "pais": "Argentina"

@@ -62,6 +62,8 @@ class CarsViewModel @Inject constructor(
 
     // Post a different list
     fun showAList(value: Boolean) {
+        updateLists()
+
         if (value){
             _carList.postValue(favCars.value)
         }else{
@@ -70,9 +72,16 @@ class CarsViewModel @Inject constructor(
     }
 
     // Update DB to mark it as favourite
-    fun updateCar(id: Int, car: Car, value: Boolean) = viewModelScope.launch {
+    fun updateCar(car: Car, value: Boolean) = viewModelScope.launch {
         car.isFavourite = value
-        updateCarUseCase(id, car)
+        updateCarUseCase(car)
+
+        updateLists()
+    }
+
+    // Store the most updated data
+    fun updateLists() = viewModelScope.launch {
+        _allCars.postValue(getCarsUseCase())
         _favCars.postValue(getFavCarsUseCase())
     }
 }

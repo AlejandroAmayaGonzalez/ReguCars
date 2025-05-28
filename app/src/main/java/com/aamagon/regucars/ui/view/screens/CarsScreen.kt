@@ -151,11 +151,7 @@ fun FavToggleButton(car: Car, carsViewModel: CarsViewModel){
     IconButton(
         onClick = {
             isPressed.value = !isPressed.value
-            carsViewModel.updateCar(
-                id = (carsViewModel.carList.value?.indexOf(car) ?: 1) + 1,
-                car = car,
-                value = isPressed.value
-            )
+            carsViewModel.updateCar(car = car, value = isPressed.value)
         }
     ) {
         Image(

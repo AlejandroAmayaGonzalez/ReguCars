@@ -20,7 +20,7 @@ class GetCarsUseCase @Inject constructor(
             repository.clearCars()
 
             // Insert
-            repository.insertCars(apiResponse.map { it.toEntity(id = apiResponse.indexOf(it)) })
+            repository.insertCars(apiResponse.map { it.toEntity(it.id) })
 
             apiResponse
         }
