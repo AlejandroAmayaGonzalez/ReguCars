@@ -1,6 +1,7 @@
 package com.aamagon.regucars.ui.view.screens
 
 import android.annotation.SuppressLint
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -20,11 +21,13 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -76,6 +79,8 @@ fun CarsScreenContent(
 ) {
 
     val carList = carsViewModel.carList.observeAsState(emptyList())
+    val noMatches = carsViewModel.noMatches.observeAsState(false)
+    val context = LocalContext.current
 
     LazyColumn (
         modifier = modifier.padding(Dimensions.default)
@@ -83,6 +88,14 @@ fun CarsScreenContent(
         items(carList.value){ car ->
             CarCard(car, carsViewModel)
             Spacer( modifier = Modifier.height(Dimensions.default) )
+        }
+    }
+
+    LaunchedEffect(noMatches) {
+        if (noMatches.value) {
+            Toast.makeText(context, context.getString(R.string.noMatchesToast),
+                Toast.LENGTH_SHORT).show()
+            carsViewModel.resetNoMatches()
         }
     }
 }

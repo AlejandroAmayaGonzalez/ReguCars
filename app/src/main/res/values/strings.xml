@@ -40,5 +40,6 @@
     <string name="applyFilters">Aplicar filtros</string>
     <string name="deleteFilters">Elminar filtros</string>
 
-
+    <!-- Strings for toasts -->
+    <string name="noMatchesToast">No hay coincidencias</string>
 </resources>
