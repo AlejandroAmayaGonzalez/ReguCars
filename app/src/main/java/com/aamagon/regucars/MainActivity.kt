@@ -17,12 +17,13 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.aamagon.regucars.ui.navigation.ToolBarRoutes
+import com.aamagon.regucars.ui.view.navigation.ToolBarRoutes
 import com.aamagon.regucars.ui.view.screens.HomeScreen
 import com.aamagon.regucars.ui.view.screens.MyProfileScreen
 import com.aamagon.regucars.ui.theme.ReguCarsTheme
 import com.aamagon.regucars.ui.view.navigation.MainToolBar
 import com.aamagon.regucars.ui.view.screens.CarsScreen
+import com.aamagon.regucars.ui.view.screens.FiltersScreen
 import com.aamagon.regucars.ui.view.screens.States
 import com.aamagon.regucars.ui.viewmodel.CarsViewModel
 import com.aamagon.regucars.ui.viewmodel.UserViewModel
@@ -74,6 +75,9 @@ fun MainApp(
                 }
                 composable(route = ToolBarRoutes.MyProfileScreen.route) {
                     MyProfileScreen(navController, userViewModel)
+                }
+                composable(route = ToolBarRoutes.FiltersScreen.route) {
+                    FiltersScreen(carsViewModel, states)
                 }
             }
         }

@@ -27,7 +27,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.aamagon.regucars.R
-import com.aamagon.regucars.ui.navigation.ToolBarRoutes
 import com.aamagon.regucars.ui.theme.Dimensions
 import com.aamagon.regucars.ui.view.screens.States
 import com.aamagon.regucars.ui.viewmodel.CarsViewModel
@@ -114,7 +113,7 @@ fun CarsToolbar(navController: NavController, carsViewModel: CarsViewModel, stat
         actions = {
             FavToggleButton(carsViewModel, states)
             Spacer(modifier = Modifier.width(Dimensions.default))
-            IconButton( onClick = { } ) {
+            IconButton( onClick = { navController.navigate(ToolBarRoutes.FiltersScreen.route) } ) {
                 Image(
                     painter = painterResource(R.drawable.icon_filter),
                     contentDescription = stringResource(R.string.icon_filter),
