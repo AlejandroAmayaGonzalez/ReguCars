@@ -4,10 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.aamagon.regucars.domain.FiltersUseCase
 import com.aamagon.regucars.domain.GetCarsUseCase
 import com.aamagon.regucars.domain.GetFavCarsUseCase
 import com.aamagon.regucars.domain.UpdateCarUseCase
 import com.aamagon.regucars.domain.model.Car
+import com.aamagon.regucars.ui.view.screens.States
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -16,6 +18,7 @@ import javax.inject.Inject
 class CarsViewModel @Inject constructor(
     private val getCarsUseCase: GetCarsUseCase,
     private val getFavCarsUseCase: GetFavCarsUseCase,
+    private val filtersUseCase: FiltersUseCase,
     private val updateCarUseCase: UpdateCarUseCase
 ): ViewModel() {
 
@@ -30,6 +33,10 @@ class CarsViewModel @Inject constructor(
     // General list
     private val _carList = MutableLiveData<List<Car>>()
     val carList: LiveData<List<Car>> = _carList
+
+    // State to alert UI for no results with that filters
+    private val _noMatches = MutableLiveData<Boolean>(false)
+    val noMatches: LiveData<Boolean> = _noMatches
 
     // Show a circular progress bar
     private val _isloading = MutableLiveData<Boolean>()
@@ -84,4 +91,16 @@ class CarsViewModel @Inject constructor(
         _allCars.postValue(getCarsUseCase())
         _favCars.postValue(getFavCarsUseCase())
     }
+
+    // Apply filters
+    fun applyFilters(states: States) {
+        val result = filtersUseCase(states, carList.value ?: emptyList())
+
+        _carList.postValue(result)
+
+        if (result.isEmpty()) _noMatches.postValue(true)
+    }
+
+    fun resetList() = _carList.postValue(allCars.value)
+    fun resetNoMatches() = _noMatches.postValue(false)
 }

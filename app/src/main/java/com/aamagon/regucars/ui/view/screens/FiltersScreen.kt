@@ -86,14 +86,14 @@ fun FilterButtons(navController: NavController, carsViewModel: CarsViewModel, st
     ) {
         Button(
             onClick = {
-                //carsViewModel.applyFilters(states)
+                carsViewModel.applyFilters(states)
                 navController.navigate(ToolBarRoutes.CarsScreen.route)
             }
         ){ Text( text = stringResource(R.string.applyFilters) ) }
         Button(
             onClick = {
                 states.resetFilters()
-                //carsViewModel.reset()
+                carsViewModel.resetList()
             }
         ){ Text( text = stringResource(R.string.deleteFilters) ) }
     }
@@ -117,7 +117,7 @@ fun CheckBoxRow(state: MutableState<Boolean>, type: String){
         Checkbox(
             checked = state.value,
             onCheckedChange = { state.value = it },
-            colors = CheckboxDefaults.colors( checkedColor = Black)
+            colors = CheckboxDefaults.colors( checkedColor = Black )
         )
         Text( text = type )
     }
