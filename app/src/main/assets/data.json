@@ -5,7 +5,7 @@
       "precio": 25520,
       "combustible": "Gasolina",
       "año": 2019,
-      "colores": ["Rojo", "Blanco", "Gris"],
+      "colores": ["rojo", "blanco", "gris"],
       "foto": "https://www.km77.com/images/medium/1/7/3/7/mediana-1.341737.jpg",
       "favorito": false
     },
@@ -14,7 +14,7 @@
       "precio": 64450,
       "combustible": "Gasolina",
       "año": 2020,
-      "colores": ["Negro", "Azul"],
+      "colores": ["negro", "azul"],
       "foto": "https://soymotor.com/sites/default/files/imagenes/noticia/audi-tts-competition-principal-2-soymotor.jpg",
       "favorito": false
     },
@@ -23,7 +23,7 @@
       "precio": 21475,
       "combustible": "Diésel",
       "año": 2015,
-      "colores": ["Rojo", "Azul", "Amarillo"],
+      "colores": ["rojo", "azul", "amarillo"],
       "foto": "https://images.coches.com/_news_/2014/02/Ford-Focus-2014-00-650x397.jpg",
       "favorito": false
     },
@@ -32,7 +32,7 @@
       "precio": 21000,
       "combustible": "Diésel",
       "año": 2006,
-      "colores": ["Gris", "Negro"],
+      "colores": ["gris", "negro"],
       "foto": "https://www.cataloge.eu/media/volkswagen/35/el/volkswagen-vw-touran-1t-facelift-2006.jpg",
       "favorito": false
     },
@@ -41,7 +41,7 @@
       "precio": 52640,
       "combustible": "Híbrido",
       "año": 2018,
-      "colores": ["Plateado", "Blanco"],
+      "colores": ["plateado", "blanco"],
       "foto": "https://www.autopista.es/uploads/s1/44/64/07/5/imagegallery-50388-59d4983aa0ab2.jpeg",
       "favorito": false
     },
@@ -50,7 +50,7 @@
       "precio": 14840,
       "combustible": "Gasolina",
       "año": 2009,
-      "colores": ["Blanco", "Gris"],
+      "colores": ["blanco", "gris"],
       "foto": "https://www.km77.com/media/fotos/seat_cordoba_2006_2195_2.jpg",
       "favorito": false
     },
@@ -59,7 +59,7 @@
       "precio": 16500,
       "combustible": "Diésel",
       "año": 2014,
-      "colores": ["Amarillo", "Azul", "Negro"],
+      "colores": ["amarillo", "azul", "negro"],
       "foto": "https://carsguide-res.cloudinary.com/image/upload/f_auto,fl_lossy,q_auto,t_default/v1/editorial/renault-cio-4-expression-d.jpg",
       "favorito": false
     },
@@ -68,7 +68,7 @@
       "precio": 33000,
       "combustible": "Híbrido",
       "año": 2023,
-      "colores": ["Azul", "Blanco"],
+      "colores": ["azul", "blanco"],
       "foto": "https://www.vdm.ford.com/content/dam/na/ford/en_us/images/escape/2025/jellybeans/2025-Escape-Plug-in-Hybrid-Right.png",
       "favorito": false
     },
@@ -77,7 +77,7 @@
       "precio": 30775,
       "combustible": "Híbrido",
       "año": 2023,
-      "colores": ["Plateado", "Blanco"],
+      "colores": ["plateado", "blanco"],
       "foto": "https://carnovo.com/wp-content/uploads/2023/09/citroen-c5-aircross-hybrid.jpg",
       "favorito": false
     },
@@ -86,7 +86,7 @@
       "precio": 36970,
       "combustible": "Eléctrico",
       "año": 2023,
-      "colores": ["Rojo", "Azul", "Verde"],
+      "colores": ["rojo", "azul", "verde"],
       "foto": "https://www.km77.com/media/fotos/mini_mini_clubman_2019_clubman_7140_1.jpg",
       "favorito": false
     },
@@ -95,7 +95,7 @@
       "precio": 29070,
       "combustible": "Eléctrico",
       "año": 2016,
-      "colores": ["Azul", "Rojo", "Blanco", "Negro"],
+      "colores": ["azul", "rojo", "blanco", "negro"],
       "foto": "https://www.autopista.es/uploads/s1/57/14/29/0/article-nissan-leaf-2016-nueva-bateria-mas-autonomia-104814-55f1782d39f4d.jpeg",
       "favorito": false
     },
@@ -104,7 +104,7 @@
       "precio": 98520,
       "combustible": "Diésel",
       "año": 2025,
-      "colores": ["Gris", "Negro", "Blanco"],
+      "colores": ["gris", "negro", "blanco"],
       "foto": "https://i.bstr.es/topventas/2020/03/Mercedes-Benz-CLS-2019-1280-01.jpg",
       "favorito": false
     }
