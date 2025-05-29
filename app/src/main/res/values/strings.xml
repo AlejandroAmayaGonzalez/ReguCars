@@ -37,8 +37,23 @@
     <string name="cbElectric">Eléctrico</string>
     <string name="cbHybrid">Híbrido</string>
 
+    <string name="yearFilterTitle">Por año de fabricación</string>
+
+    <string name="colorFilterTitle">Por color disponible</string>
+    <string name="placeholderColor">Selecciona</string>
+
     <string name="applyFilters">Aplicar filtros</string>
     <string name="deleteFilters">Elminar filtros</string>
+
+    <!-- Strings for dropdown options -->
+    <string name="white">Blanco</string>
+    <string name="black">Negro</string>
+    <string name="red">Rojo</string>
+    <string name="blue">Azul</string>
+    <string name="silver">Plateado</string>
+    <string name="green">Verde</string>
+    <string name="yellow">Amarillo</string>
+    <string name="gray">Gris</string>
 
     <!-- Strings for toasts -->
     <string name="noMatchesToast">No hay coincidencias</string>
