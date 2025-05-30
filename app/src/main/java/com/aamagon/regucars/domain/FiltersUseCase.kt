@@ -1,7 +1,6 @@
 package com.aamagon.regucars.domain
 
 import android.content.Context
-import android.util.Log
 import com.aamagon.regucars.R
 import com.aamagon.regucars.domain.model.Car
 import com.aamagon.regucars.ui.view.screens.States
@@ -27,17 +26,22 @@ class FiltersUseCase @Inject constructor(
                     it.fuelType in checkboxCategories
                 }else{ true }
             }.filter {
+                // Price filter
+                if (states.sliderPos.floatValue.toInt() != 0){
+                    it.price <= states.sliderPos.floatValue.toInt()
+                }else{ true }
+            }.filter {
+                // Year filter
                 if (states.selectedYear.intValue != 0){
                     it.year == states.selectedYear.intValue
                 }else{ true }
             }.filter {
+                // Color filter
                 if (states.selectedColor.value.isNotBlank()) {
                     it.colors.contains(states.selectedColor.value.lowercase())
                 }else{ true }
             }
 
-        Log.e("return list", "${result.toList()}")
-        Log.e("color", states.selectedColor.value)
         return result.toList()
     }
 }

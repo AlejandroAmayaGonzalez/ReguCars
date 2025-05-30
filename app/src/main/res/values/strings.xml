@@ -38,9 +38,11 @@
     <string name="cbHybrid">Híbrido</string>
 
     <string name="yearFilterTitle">Por año de fabricación</string>
-
     <string name="colorFilterTitle">Por color disponible</string>
-    <string name="placeholderColor">Selecciona</string>
+    <string name="dropdownPlaceholder">Selecciona</string>
+
+    <string name="priceFilterTitle">Por precio</string>
+    <string name="minPrice">1€</string>
 
     <string name="applyFilters">Aplicar filtros</string>
     <string name="deleteFilters">Elminar filtros</string>
@@ -56,7 +58,6 @@
     <string name="gray">Gris</string>
 
     <!-- Strings for noMatches -->
-    <string name="noMatchesToast">No hay coincidencias</string>
     <string name="noMatchesText">No existen vehículos disponibles con esos filtros</string>
     <string name="noResultDesc">Imagen de no resultados</string>
 </resources>

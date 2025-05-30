@@ -44,6 +44,7 @@ class CarsViewModel @Inject constructor(
 
     // List before filters
     private var original = emptyList<Car>()
+    var maxPrice: Int = 0
 
     init {
         viewModelScope.launch {
@@ -65,6 +66,9 @@ class CarsViewModel @Inject constructor(
             }else{
                 _favCars.postValue(emptyList())
             }
+
+            // Store the most expensive price
+            maxPrice = getMaxPrice(allCars)
 
             _isloading.postValue(false)
         }
@@ -93,6 +97,23 @@ class CarsViewModel @Inject constructor(
     fun updateLists() = viewModelScope.launch {
         _allCars.postValue(getCarsUseCase())
         _favCars.postValue(getFavCarsUseCase())
+    }
+
+    // Store the most expensive car to assign it as the maximum slider
+    private fun getMaxPrice(list: List<Car>): Int{
+        if (list.isNotEmpty()){
+            val size = list.size - 1
+            var res = 0
+
+            for (i in 0..size){
+                var value = list[i].price
+                if (value > res) res = value
+            }
+
+            return res
+        }
+
+        return 1
     }
 
     // Apply filters

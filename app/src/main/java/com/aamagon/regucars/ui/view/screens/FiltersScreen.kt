@@ -1,6 +1,7 @@
 package com.aamagon.regucars.ui.view.screens
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -19,8 +21,11 @@ import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Slider
+import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -28,12 +33,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.aamagon.regucars.R
+import com.aamagon.regucars.core.extensions.formatPrice
 import com.aamagon.regucars.ui.theme.Black
 import com.aamagon.regucars.ui.theme.Dimensions
 import com.aamagon.regucars.ui.view.navigation.MainToolBar
@@ -48,26 +55,28 @@ fun FiltersScreen(navController: NavController, carsViewModel: CarsViewModel, st
         topBar = { ToolbarTitle(navController) },
         bottomBar = { MainToolBar(navController) },
         modifier = Modifier.fillMaxSize()
-    ) {
+    ) { innerPadding ->
         FiltersScreenContent(
             carsViewModel = carsViewModel,
             states = states,
-            navController = navController
+            navController = navController,
+            modifier = Modifier.padding(innerPadding)
         )
     }
 }
 
 @Composable
-fun FiltersScreenContent(carsViewModel: CarsViewModel, states: States, navController: NavController) {
+fun FiltersScreenContent(carsViewModel: CarsViewModel, states: States, navController: NavController, modifier: Modifier) {
     val scrollState = rememberScrollState()
 
     Column (
-        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.fillMaxSize().padding(Dimensions.default)
+        modifier = modifier.fillMaxSize().padding(Dimensions.default)
             .verticalScroll(scrollState)
     ){
         FuelFilter(states)
+        Divider()
+        PriceFilter(states, carsViewModel)
         Divider()
         YearPicker(states)
         Divider()
@@ -126,7 +135,7 @@ fun YearPicker(states: States){
         Box {
             Text(
                 text = if (states.selectedYear.intValue == 0)
-                            stringResource(R.string.placeholderColor)
+                            stringResource(R.string.dropdownPlaceholder)
                        else states.selectedYear.intValue.toString(),
                 textAlign = TextAlign.Center,
                 modifier = Modifier
@@ -169,7 +178,7 @@ fun ColorPicker(states: States){
             Text(
                 text = if (states.selectedColor.value.isNotEmpty())
                             states.selectedColor.value
-                       else stringResource(R.string.placeholderColor),
+                       else stringResource(R.string.dropdownPlaceholder),
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .width(120.dp)
@@ -193,6 +202,47 @@ fun ColorPicker(states: States){
                 }
             }
         }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@SuppressLint("DefaultLocale")
+@Composable
+fun PriceFilter(states: States, carsViewModel: CarsViewModel){
+
+    states.maxSlider = carsViewModel.maxPrice
+
+    Column ( modifier = Modifier.fillMaxSize() ) {
+        FilterTitle(stringResource(R.string.priceFilterTitle))
+
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier.fillMaxWidth()
+                .padding(start = Dimensions.default, end = Dimensions.default)
+        ) {
+            Text( text = stringResource(R.string.minPrice) )
+            Text(
+                text = stringResource(R.string.minPrice) + " - " +
+                        states.sliderPos.floatValue.toInt().formatPrice()
+            )
+            Text( text = carsViewModel.maxPrice.formatPrice())
+        }
+
+        Slider(
+            value = states.sliderPos.floatValue,
+            onValueChange = { states.sliderPos.floatValue = it },
+            // From 1€ to the most expensive bill
+            valueRange = 1f..carsViewModel.maxPrice.toFloat(),
+            colors = SliderDefaults.colors(),
+            thumb = {
+                Image(
+                    painter = painterResource(R.drawable.thumb_icon),
+                    contentDescription = null,
+                    modifier = Modifier.size(Dimensions.thumbSize)
+                )
+            },
+            modifier = Modifier.padding(start = Dimensions.default, end = Dimensions.default)
+        )
     }
 }
 

@@ -1,6 +1,7 @@
 package com.aamagon.regucars.ui.view.screens
 
 import android.content.Context
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import com.aamagon.regucars.R
@@ -28,6 +29,10 @@ class States @Inject constructor(
     // State for color
     var selectedColor = mutableStateOf("")
 
+    // States for price filter
+    var sliderPos = mutableFloatStateOf(0F)
+    var maxSlider = 0
+
     // Options available for dropdown filters
     val yearOptions = (2000..LocalDate.now().year).toList().reversed()
 
@@ -47,6 +52,8 @@ class States @Inject constructor(
         dieselChecked.value = false
         electricChecked.value = false
         hybridChecked.value = false
+
+        sliderPos.floatValue = 0F
 
         selectedYear.intValue = 0
         selectedColor.value = ""
