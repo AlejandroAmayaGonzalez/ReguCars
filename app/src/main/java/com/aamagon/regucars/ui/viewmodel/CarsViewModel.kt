@@ -42,6 +42,9 @@ class CarsViewModel @Inject constructor(
     private val _isloading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isloading
 
+    // List before filters
+    private var original = emptyList<Car>()
+
     init {
         viewModelScope.launch {
             _isloading.postValue(true)
@@ -94,8 +97,15 @@ class CarsViewModel @Inject constructor(
 
     // Apply filters
     fun applyFilters(states: States) {
-        val result = filtersUseCase(states, carList.value ?: emptyList())
+        // Store the used list to filter
+        original = if (states.showFavs.value){
+            favCars.value ?: emptyList()
+        }else{
+            allCars.value ?: emptyList()
+        }
 
+        // Post result to show it
+        val result = filtersUseCase(states, original)
         _carList.postValue(result)
 
         if (result.isEmpty()) {
@@ -105,5 +115,5 @@ class CarsViewModel @Inject constructor(
         }
     }
 
-    fun resetList() = _carList.postValue(allCars.value)
+    fun resetList() = _carList.postValue(original)
 }
