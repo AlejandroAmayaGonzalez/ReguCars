@@ -98,9 +98,12 @@ class CarsViewModel @Inject constructor(
 
         _carList.postValue(result)
 
-        if (result.isEmpty()) _noMatches.postValue(true)
+        if (result.isEmpty()) {
+            _noMatches.postValue(true)
+        }else {
+            _noMatches.postValue(false)
+        }
     }
 
     fun resetList() = _carList.postValue(allCars.value)
-    fun resetNoMatches() = _noMatches.postValue(false)
 }

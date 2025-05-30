@@ -55,6 +55,8 @@
     <string name="yellow">Amarillo</string>
     <string name="gray">Gris</string>
 
-    <!-- Strings for toasts -->
+    <!-- Strings for noMatches -->
     <string name="noMatchesToast">No hay coincidencias</string>
+    <string name="noMatchesText">No existen vehículos disponibles con esos filtros</string>
+    <string name="noResultDesc">Imagen de no resultados</string>
 </resources>

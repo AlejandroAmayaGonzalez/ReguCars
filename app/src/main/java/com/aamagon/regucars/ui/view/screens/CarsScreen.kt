@@ -30,6 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -56,7 +57,6 @@ fun CarsScreen(navController: NavController, carsViewModel: CarsViewModel, state
         )
 
         var loading = carsViewModel.isLoading.observeAsState(false)
-
         if (loading.value){
             Column (
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -67,6 +67,25 @@ fun CarsScreen(navController: NavController, carsViewModel: CarsViewModel, state
             }
         }
 
+        var noMatches = carsViewModel.noMatches.observeAsState(false)
+        if (noMatches.value){
+            Column (
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
+                modifier = Modifier.fillMaxSize()
+            ) {
+                Image(
+                    painter = painterResource(R.drawable.no_result),
+                    contentDescription = stringResource(R.string.noResultDesc)
+                )
+                Text(
+                    text = stringResource(R.string.noMatchesText),
+                    fontSize = Dimensions.titleDialog,
+                    textAlign = TextAlign.Center,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
     }
 }
 
@@ -95,7 +114,6 @@ fun CarsScreenContent(
         if (noMatches.value) {
             Toast.makeText(context, context.getString(R.string.noMatchesToast),
                 Toast.LENGTH_SHORT).show()
-            carsViewModel.resetNoMatches()
         }
     }
 }
