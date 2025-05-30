@@ -18,7 +18,7 @@ object RetromockModule {
 
     @Singleton
     @Provides
-    fun provideCarsRetromock(
+    fun provideDataRetromock(
         @ApplicationContext context: Context,
         retrofit: Retrofit
     ): Retromock{

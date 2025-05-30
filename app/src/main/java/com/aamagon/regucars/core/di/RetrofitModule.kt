@@ -14,7 +14,7 @@ object RetrofitModule {
 
     @Singleton
     @Provides
-    fun provideCarsRetrofit(): Retrofit{
+    fun provideDataRetrofit(): Retrofit{
         return Retrofit.Builder()
             .baseUrl("https://mock.api/")
             .addConverterFactory(GsonConverterFactory.create())

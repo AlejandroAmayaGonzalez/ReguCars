@@ -146,6 +146,7 @@ fun FavToggleButton(carsViewModel: CarsViewModel, states: States){
         // Change between favourites list and all cars list
         onClick = {
             states.showFavs.value = states.showFavs.value != true
+            carsViewModel.changeNoMatchesValue(false)
             carsViewModel.showAList(states.showFavs.value)
         }
     ) {
