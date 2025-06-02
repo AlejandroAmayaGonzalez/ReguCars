@@ -125,6 +125,31 @@ fun CarsToolbar(navController: NavController, carsViewModel: CarsViewModel, stat
     )
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun FiltersToolbar(navController: NavController){
+    TopAppBar(
+        title = {
+            val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
+            Text(
+                text = getTitle(currentRoute),
+                fontWeight = FontWeight.Bold,
+                fontSize = 40.sp
+            )
+        },
+        actions = {
+            IconButton( onClick = { navController.popBackStack() } ) {
+                Image(
+                    painter = painterResource(R.drawable.icon_close),
+                    contentDescription = stringResource(R.string.icon_close),
+                    modifier = Modifier.size(Dimensions.toolbarIconSize)
+                )
+            }
+        },
+        colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.LightGray)
+    )
+}
+
 @Composable
 fun getTitle(route: String?): String {
     return when (route){

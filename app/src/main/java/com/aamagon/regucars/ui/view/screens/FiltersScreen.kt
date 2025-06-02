@@ -43,16 +43,16 @@ import com.aamagon.regucars.R
 import com.aamagon.regucars.core.extensions.formatPrice
 import com.aamagon.regucars.ui.theme.Black
 import com.aamagon.regucars.ui.theme.Dimensions
+import com.aamagon.regucars.ui.view.navigation.FiltersToolbar
 import com.aamagon.regucars.ui.view.navigation.MainToolBar
 import com.aamagon.regucars.ui.view.navigation.ToolBarRoutes
-import com.aamagon.regucars.ui.view.navigation.ToolbarTitle
 import com.aamagon.regucars.ui.viewmodel.CarsViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun FiltersScreen(navController: NavController, carsViewModel: CarsViewModel, states: States){
     Scaffold (
-        topBar = { ToolbarTitle(navController) },
+        topBar = { FiltersToolbar(navController) },
         bottomBar = { MainToolBar(navController) },
         modifier = Modifier.fillMaxSize()
     ) { innerPadding ->

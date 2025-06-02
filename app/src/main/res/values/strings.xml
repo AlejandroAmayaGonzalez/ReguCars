@@ -10,6 +10,7 @@
     <string name="icon_filter">Filtros</string>
     <string name="addFav">Añadir favoritos</string>
     <string name="delFav">Eliminar favoritos</string>
+    <string name="icon_close">Cerrar</string>
 
     <!-- Labels for TextFields -->
     <string name="lbNickname">Nombre de usuario</string>
