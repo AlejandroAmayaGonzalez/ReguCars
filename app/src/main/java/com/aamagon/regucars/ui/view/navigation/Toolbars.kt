@@ -18,7 +18,6 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -28,13 +27,16 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.aamagon.regucars.R
 import com.aamagon.regucars.ui.theme.Dimensions
+import com.aamagon.regucars.ui.theme.LibreBaskervilleFamily
+import com.aamagon.regucars.ui.theme.LightBlue
+import com.aamagon.regucars.ui.theme.WinkySansFamily
 import com.aamagon.regucars.ui.view.screens.States
 import com.aamagon.regucars.ui.viewmodel.CarsViewModel
 
 @Composable
 fun MainToolBar(navController: NavController){
     BottomAppBar (
-        containerColor = Color.LightGray,
+        containerColor = LightBlue,
         actions = {
             Row (
                 horizontalArrangement = Arrangement.SpaceAround,
@@ -78,7 +80,11 @@ fun ToolBarIcon(
             )
         }
 
-        Text( text = stringResource(contentDesc) )
+        Text(
+            text = stringResource(contentDesc),
+            fontWeight = FontWeight.Bold,
+            fontFamily = WinkySansFamily
+        )
     }
 }
 
@@ -91,10 +97,11 @@ fun ToolbarTitle(navController: NavController){
             Text(
                 text = getTitle(currentRoute),
                 fontWeight = FontWeight.Bold,
+                fontFamily = LibreBaskervilleFamily,
                 fontSize = 40.sp
             )
         },
-        colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.LightGray)
+        colors = TopAppBarDefaults.topAppBarColors(containerColor = LightBlue)
     )
 }
 
@@ -107,6 +114,7 @@ fun CarsToolbar(navController: NavController, carsViewModel: CarsViewModel, stat
             Text(
                 text = getTitle(currentRoute),
                 fontWeight = FontWeight.Bold,
+                fontFamily = LibreBaskervilleFamily,
                 fontSize = 40.sp
             )
         },
@@ -121,7 +129,7 @@ fun CarsToolbar(navController: NavController, carsViewModel: CarsViewModel, stat
                 )
             }
         },
-        colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.LightGray)
+        colors = TopAppBarDefaults.topAppBarColors(containerColor = LightBlue)
     )
 }
 
@@ -134,6 +142,7 @@ fun FiltersToolbar(navController: NavController){
             Text(
                 text = getTitle(currentRoute),
                 fontWeight = FontWeight.Bold,
+                fontFamily = LibreBaskervilleFamily,
                 fontSize = 40.sp
             )
         },
@@ -146,7 +155,7 @@ fun FiltersToolbar(navController: NavController){
                 )
             }
         },
-        colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.LightGray)
+        colors = TopAppBarDefaults.topAppBarColors(containerColor = LightBlue)
     )
 }
 

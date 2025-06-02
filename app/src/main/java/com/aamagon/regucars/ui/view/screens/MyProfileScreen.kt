@@ -1,6 +1,7 @@
 package com.aamagon.regucars.ui.view.screens
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,14 +22,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.aamagon.regucars.R
 import com.aamagon.regucars.domain.model.User
+import com.aamagon.regucars.ui.theme.BackGroundTf
+import com.aamagon.regucars.ui.theme.BackgroundColor
 import com.aamagon.regucars.ui.theme.Dimensions
 import com.aamagon.regucars.ui.theme.Black
-import com.aamagon.regucars.ui.theme.White
+import com.aamagon.regucars.ui.theme.LibreBaskervilleFamily
+import com.aamagon.regucars.ui.theme.LightBlue
 import com.aamagon.regucars.ui.view.navigation.MainToolBar
 import com.aamagon.regucars.ui.view.navigation.ToolbarTitle
 import com.aamagon.regucars.ui.viewmodel.UserViewModel
@@ -42,7 +47,7 @@ fun MyProfileScreen(navController: NavController, userViewModel: UserViewModel){
     ) { innerPadding ->
         MyProfileScreenContent(
             userViewModel = userViewModel,
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier.padding(innerPadding).background(BackgroundColor)
         )
     }
 }
@@ -62,7 +67,7 @@ fun MyProfileScreenContent(
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier.fillMaxSize().padding(Dimensions.default)
-            .verticalScroll(scrollState)
+            .verticalScroll(scrollState).background(BackgroundColor)
     ){
         AsyncImage(
             model = user.value.photo,
@@ -86,11 +91,19 @@ fun ProfileTextField(txLabel: String, tfValue: String){
     TextField(
         value = tfValue,
         onValueChange = {},
-        label = { Text( text = txLabel, color = Black) },
+        label = {
+            Text(
+                text = txLabel,
+                color = Black,
+                fontWeight = FontWeight.Bold,
+                fontFamily = LibreBaskervilleFamily,
+                fontSize = Dimensions.labelTf
+            )
+        },
         colors = TextFieldDefaults.colors(
-            focusedContainerColor = White,
-            unfocusedContainerColor = White,
-            focusedIndicatorColor = Black,
+            focusedContainerColor = BackGroundTf,
+            unfocusedContainerColor = BackGroundTf,
+            focusedIndicatorColor = LightBlue,
         ),
         readOnly = true,
         modifier = Modifier.fillMaxWidth()

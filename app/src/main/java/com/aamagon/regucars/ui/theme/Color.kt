@@ -12,4 +12,9 @@ val Pink40 = Color(0xFF7D5260)
 
 // Basic colors
 val Black = Color(0xFF000000)
-val White = Color(0xFFFFFFFF)
+
+// Main Colors
+val LightBlue = Color(0xFF00DDFA)
+val BackgroundColor = Color(0xFF312F2F)
+val CardColor = Color(0xFF00BCD4)
+val BackGroundTf = Color(0xFFC7C7C7)

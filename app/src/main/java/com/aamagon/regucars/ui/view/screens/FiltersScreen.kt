@@ -2,6 +2,7 @@ package com.aamagon.regucars.ui.view.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -17,6 +18,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.DropdownMenu
@@ -41,8 +43,12 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.aamagon.regucars.R
 import com.aamagon.regucars.core.extensions.formatPrice
+import com.aamagon.regucars.ui.theme.BackGroundTf
 import com.aamagon.regucars.ui.theme.Black
+import com.aamagon.regucars.ui.theme.CardColor
 import com.aamagon.regucars.ui.theme.Dimensions
+import com.aamagon.regucars.ui.theme.LibreBaskervilleFamily
+import com.aamagon.regucars.ui.theme.LightBlue
 import com.aamagon.regucars.ui.view.navigation.FiltersToolbar
 import com.aamagon.regucars.ui.view.navigation.MainToolBar
 import com.aamagon.regucars.ui.view.navigation.ToolBarRoutes
@@ -60,7 +66,7 @@ fun FiltersScreen(navController: NavController, carsViewModel: CarsViewModel, st
             carsViewModel = carsViewModel,
             states = states,
             navController = navController,
-            modifier = Modifier.padding(innerPadding)
+            modifier = Modifier.padding(innerPadding).background(BackGroundTf)
         )
     }
 }
@@ -110,13 +116,21 @@ fun FilterButtons(navController: NavController, carsViewModel: CarsViewModel, st
             onClick = {
                 carsViewModel.applyFilters(states)
                 navController.navigate(ToolBarRoutes.CarsScreen.route)
-            }
+            },
+            colors = ButtonDefaults.buttonColors(
+                containerColor = CardColor,
+                contentColor = Black
+            )
         ){ Text( text = stringResource(R.string.applyFilters) ) }
         Button(
             onClick = {
                 states.resetFilters()
                 carsViewModel.resetList()
-            }
+            },
+            colors = ButtonDefaults.buttonColors(
+                containerColor = CardColor,
+                contentColor = Black
+            )
         ){ Text( text = stringResource(R.string.deleteFilters) ) }
     }
 }
@@ -233,7 +247,10 @@ fun PriceFilter(states: States, carsViewModel: CarsViewModel){
             onValueChange = { states.sliderPos.floatValue = it },
             // From 1€ to the most expensive bill
             valueRange = 1f..carsViewModel.maxPrice.toFloat(),
-            colors = SliderDefaults.colors(),
+            colors = SliderDefaults.colors(
+                activeTrackColor = LightBlue,
+                inactiveTrackColor = CardColor
+            ),
             thumb = {
                 Image(
                     painter = painterResource(R.drawable.thumb_icon),
@@ -251,6 +268,7 @@ fun FilterTitle(title: String) {
     Text(
         text = title,
         fontSize = Dimensions.filterTitle,
+        fontFamily = LibreBaskervilleFamily,
         fontWeight = FontWeight.Bold
     )
 }
@@ -264,7 +282,7 @@ fun CheckBoxRow(state: MutableState<Boolean>, type: String){
         Checkbox(
             checked = state.value,
             onCheckedChange = { state.value = it },
-            colors = CheckboxDefaults.colors( checkedColor = Black )
+            colors = CheckboxDefaults.colors( checkedColor = CardColor)
         )
         Text( text = type )
     }

@@ -2,6 +2,7 @@ package com.aamagon.regucars.ui.view.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -35,7 +36,11 @@ import coil.compose.AsyncImage
 import com.aamagon.regucars.R
 import com.aamagon.regucars.core.extensions.formatPrice
 import com.aamagon.regucars.domain.model.Car
+import com.aamagon.regucars.ui.theme.BackGroundTf
+import com.aamagon.regucars.ui.theme.BackgroundColor
+import com.aamagon.regucars.ui.theme.CardColor
 import com.aamagon.regucars.ui.theme.Dimensions
+import com.aamagon.regucars.ui.theme.LightBlue
 import com.aamagon.regucars.ui.view.dialogs.CarDialog
 import com.aamagon.regucars.ui.view.navigation.CarsToolbar
 import com.aamagon.regucars.ui.view.navigation.MainToolBar
@@ -46,11 +51,12 @@ fun CarsScreen(navController: NavController, carsViewModel: CarsViewModel, state
     Scaffold (
         topBar = { CarsToolbar(navController, carsViewModel, states) },
         bottomBar = { MainToolBar(navController) },
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize().background(BackgroundColor)
     ) { innerPadding ->
         CarsScreenContent(
             carsViewModel = carsViewModel,
             modifier = Modifier.padding(innerPadding)
+                .background(BackgroundColor).fillMaxSize()
         )
 
         var loading = carsViewModel.isLoading.observeAsState(false)
@@ -58,9 +64,9 @@ fun CarsScreen(navController: NavController, carsViewModel: CarsViewModel, state
             Column (
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center,
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier.fillMaxSize().background(BackGroundTf)
             ) {
-                CircularProgressIndicator()
+                CircularProgressIndicator( color = LightBlue )
             }
         }
 
@@ -69,7 +75,7 @@ fun CarsScreen(navController: NavController, carsViewModel: CarsViewModel, state
             Column (
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center,
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier.fillMaxSize().background(BackGroundTf)
             ) {
                 Image(
                     painter = painterResource(R.drawable.no_result),
@@ -115,7 +121,7 @@ fun CarCard(car: Car, carsViewModel: CarsViewModel){
     ) {
         Row (
             horizontalArrangement = Arrangement.SpaceAround,
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize().background(CardColor)
         ) {
             Box ( modifier = Modifier.height(Dimensions.cardHeight) ) {
                 AsyncImage(
@@ -132,10 +138,15 @@ fun CarCard(car: Car, carsViewModel: CarsViewModel){
                 ) {
                     Text(
                         text = car.model,
-                        textAlign = TextAlign.Center
+                        textAlign = TextAlign.Center,
+                        fontSize = Dimensions.cardModel
                     )
                     Spacer( modifier = Modifier.height(10.dp) )
-                    Text( text = car.price.formatPrice())
+                    Text(
+                        text = car.price.formatPrice(),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = Dimensions.cardPrice
+                    )
                 }
             }
             Box (

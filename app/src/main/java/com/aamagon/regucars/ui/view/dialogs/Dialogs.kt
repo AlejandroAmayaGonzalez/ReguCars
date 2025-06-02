@@ -25,7 +25,9 @@ import com.aamagon.regucars.R
 import com.aamagon.regucars.core.extensions.formatPrice
 import com.aamagon.regucars.core.extensions.listToString
 import com.aamagon.regucars.domain.model.Car
+import com.aamagon.regucars.ui.theme.BackGroundTf
 import com.aamagon.regucars.ui.theme.Dimensions
+import com.aamagon.regucars.ui.theme.LibreBaskervilleFamily
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -46,9 +48,11 @@ fun CarDialog(show: Boolean, car: Car, onDismiss: () -> Unit){
                 Text(
                     text = stringResource(R.string.titleDialog) + car.model,
                     fontWeight = FontWeight.Bold,
+                    fontFamily = LibreBaskervilleFamily,
                     fontSize = Dimensions.titleDialog
                 )
             },
+            containerColor = BackGroundTf,
             text = { CarDialogContent(car) }
         )
     }
