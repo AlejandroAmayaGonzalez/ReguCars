@@ -93,6 +93,7 @@ dependencies {
     testImplementation(libs.kotlin.test)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.androidx.core)
+    testImplementation(libs.androidx.core.testing)
 
     // Debug
     debugImplementation(libs.androidx.ui.tooling)
