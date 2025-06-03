@@ -9,20 +9,22 @@ class GetUserUseCase @Inject constructor(
     private val repository: Repository
 ) {
     suspend operator fun invoke(): User {
-        val response = repository.getUsersFromApi()
+        val apiResponse = repository.getUsersFromApi()
 
-        val random = (0..response.size -1).random()
+        val random: Int
 
-        return if (response.isNotEmpty()){
+        return if (apiResponse.isNotEmpty()){
             repository.clearUsers()
 
-            repository.insertUsers(response.map { it.toEntity(id = response.indexOf(it)) })
+            repository.insertUsers(apiResponse.map { it.toEntity(id = apiResponse.indexOf(it)) })
 
-            response[random]
+            random = (0 until apiResponse.size).random()
+            apiResponse[random]
         }else{
-            val response = repository.getUsersFromDatabase()
+            val dbResponse = repository.getUsersFromDatabase()
 
-            response[random]
+            random = (0 until dbResponse.size).random()
+            dbResponse[random]
         }
     }
 }
