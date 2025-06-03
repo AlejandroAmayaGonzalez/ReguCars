@@ -3,15 +3,20 @@ agp = "8.9.2"
 androidxLifecycleViewmodelKtx = "2.9.0"
 coilCompose = "2.7.0"
 converterGson = "2.11.0"
+core = "1.6.1"
+coreTesting = "2.2.0"
 kotlin = "2.1.0"
 coreKtx = "1.16.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
+kotlinTest = "2.1.0"
+kotlinxCoroutinesTest = "1.7.3"
 lifecycleRuntimeKtx = "2.9.0"
 activityCompose = "1.10.1"
 composeBom = "2025.05.00"
 lifecycleRuntimeKtxVersion = "2.9.0"
+mockk = "1.13.5"
 navigationCompose = "2.9.0"
 hiltVersion = "2.51.1"
 hiltNavigationVersion = "1.2.0"
@@ -21,7 +26,9 @@ room = "2.7.1"
 runtimeLivedata = "1.8.1"
 
 [libraries]
+androidx-core = { module = "androidx.test:core", version.ref = "core" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-core-testing = { module = "androidx.arch.core:core-testing", version.ref = "coreTesting" }
 androidx-lifecycle-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidxLifecycleViewmodelKtx" }
 androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "androidxLifecycleViewmodelKtx" }
 androidx-lifecycle-runtime-ktx-v290 = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtxVersion" }
@@ -46,6 +53,9 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationVersion" }
 hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hiltVersion" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltVersion" }
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlinTest" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retromock = { module = "co.infinum:retromock", version.ref = "retromock" }
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
