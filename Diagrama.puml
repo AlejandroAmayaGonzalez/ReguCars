@@ -1,0 +1,216 @@
+@startuml
+class com.aamagon.regucars.domain.UpdateCarUseCase {
+}
+class com.aamagon.regucars.ui.theme.Dimensions {
++  default
++  toolbarIconSize
++  titleDialog
++  contentDialog
++  filterTitle
++  thumbSize
++  cardHeight
++  cardModel
++  cardPrice
++  labelTf
+}
+
+class com.aamagon.regucars.data.network.ApiService {
+}
+class com.aamagon.regucars.ui.viewmodel.UserViewModel {
+}
+class com.aamagon.regucars.core.bodyFactory.AssetsBodyFactory {
++ InputStream create(String)
+}
+
+class com.aamagon.regucars.ui.view.screens.States {
+}
+class com.aamagon.regucars.data.database.entities.UserEntity {
+}
+class com.aamagon.regucars.domain.FiltersUseCaseTest {
++ FiltersUseCase filtersUseCase
++  context
++  list
++ void onBefore()
++ void filter by fuel type()
++ void filter by price()
++ void filter by car color()
++ void filter by year()
+}
+
+
+class com.aamagon.regucars.ui.viewmodel.CarsViewModelTest {
+- GetCarsUseCase getCarsUseCase
+- GetFavCarsUseCase getFavCarsUseCase
+- FiltersUseCase filtersUseCase
+- UpdateCarUseCase updateCarUseCase
++  context
+- CarsViewModel carsViewModel
+-  dispatcher
++ InstantTaskExecutorRule rule
++  allCars
++  favCars
++ void onBefore()
++ void onAfter()
++ void when the viewmodel is created, get data, set it and set biggest price()
++ void change between lists due to the boolean parameter()
++ void set the updated list in each livedata()
++ void change favourite field of an specific car()
++ void when there are applied filters, set the result, noMatches and original list value()
++ void reset the general list to original()
+}
+
+
+class com.aamagon.regucars.core.extensions.Converters {
++ List<String> stringForList(String)
++ String listToString(List<String>)
+}
+
+abstract class com.aamagon.regucars.data.database.Database {
++ CarDao getCarsDao()
++ UserDao getUserDao()
+}
+
+class com.aamagon.regucars.core.di.RoomModule$null {
+}
+class com.aamagon.regucars.core.di.RoomModule {
+-  DATABASE_NAME
++ void provideRoom(Context)
++ void provideCarDao(Database)
++ void provideUserDao(Database)
+}
+
+
+class com.aamagon.regucars.EnableHilt {
+}
+class com.aamagon.regucars.MainActivity {
++ void onCreate(Bundle?)
+}
+
+class com.aamagon.regucars.data.Repository {
+}
+class com.aamagon.regucars.data.model.CarModel {
+}
+class com.aamagon.regucars.ui.view.navigation.ToolBarRoutes$HomeScreen {
+}
+class com.aamagon.regucars.ui.view.navigation.ToolBarRoutes$CarsScreen {
+}
+class com.aamagon.regucars.ui.view.navigation.ToolBarRoutes$MyProfileScreen {
+}
+class com.aamagon.regucars.ui.view.navigation.ToolBarRoutes$FiltersScreen {
+}
+class com.aamagon.regucars.ui.view.navigation.ToolBarRoutes {
+}
+class com.aamagon.regucars.domain.GetFavCarsUseCaseTest {
+- Repository repository
++ GetFavCarsUseCase getFavCarsUseCase
++  res
++ void onBefore()
++ void call repository to get favourite list from database()
+}
+
+
+class com.aamagon.regucars.domain.UpdateCarUseCaseTest {
+- Repository repository
++ UpdateCarUseCase updateCarUseCase
++  res
++ void onBefore()
++ void call repository then db to change the car boolean field()
+}
+
+
+class com.aamagon.regucars.data.model.DataModel {
+}
+interface com.aamagon.regucars.data.database.dao.UserDao {
++ List<UserEntity> getAllUsers()
++ void insertAllUsers(List<UserEntity>)
++ void deleteUsers()
+}
+
+class com.aamagon.regucars.domain.GetUserUseCaseTest {
+- Repository repository
++ GetUserUseCase getUserUseCase
++  res1
++ void onBefore()
++ void when the api returns something and it is not empty()
++ void when the api returns emptyList then get from DB()
+}
+
+
+class com.aamagon.regucars.data.model.UserModel {
+}
+class com.aamagon.regucars.domain.GetFavCarsUseCase {
+}
+class com.aamagon.regucars.ui.viewmodel.UserViewModelTest {
+- GetUserUseCase getUserUseCase
+- UserViewModel userViewModel
+-  dispatcher
++ InstantTaskExecutorRule rule
++ void onBefore()
++ void onAfter()
++ void create viewmodel, get data and set it()
+}
+
+
+interface com.aamagon.regucars.data.database.dao.CarDao {
++ List<CarEntity> getAllCars()
++ void insertAllCars(List<CarEntity>)
++ void deleteCars()
++ List<CarEntity> getFavCars()
++ void updateCar(CarEntity)
+}
+
+class com.aamagon.regucars.domain.GetCarsUseCaseTest {
+- Repository repository
++ GetCarsUseCase getCarsUseCase
++  res2
++  res1
++ void onBefore()
++ void when the api returns something but it's the same as the DB or it's not empty()
++ void when the api returns something but the stored data is different or it's empty()
+}
+
+
+class com.aamagon.regucars.domain.GetCarsUseCase {
+}
+class com.aamagon.regucars.domain.model.User {
+}
+class com.aamagon.regucars.domain.FiltersUseCase {
+}
+class com.aamagon.regucars.core.di.RetrofitModule {
++ Retrofit provideDataRetrofit()
+}
+
+class com.aamagon.regucars.domain.model.Car {
+}
+class com.aamagon.regucars.core.di.RetromockModule {
++ void provideDataRetromock(void)
++ void null()
++ ApiClient provideApiClient(Retromock)
+}
+
+class com.aamagon.regucars.domain.GetUserUseCase {
+}
+interface com.aamagon.regucars.data.network.ApiClient {
++ Response<DataModel> getData()
+}
+
+class com.aamagon.regucars.data.database.entities.CarEntity {
+}
+class com.aamagon.regucars.ui.viewmodel.CarsViewModel {
+}
+
+
+co.infinum.retromock.BodyFactory <|.. com.aamagon.regucars.core.bodyFactory.AssetsBodyFactory
+androidx.room.RoomDatabase <|-- com.aamagon.regucars.data.database.Database
+com.aamagon.regucars.core.di.RoomModule +.. com.aamagon.regucars.core.di.RoomModule$null
+android.app.Application <|-- com.aamagon.regucars.EnableHilt
+androidx.activity.ComponentActivity <|-- com.aamagon.regucars.MainActivity
+com.aamagon.regucars.ui.view.navigation.ToolBarRoutes +.. com.aamagon.regucars.ui.view.navigation.ToolBarRoutes$HomeScreen
+com.aamagon.regucars.ui.view.navigation.ToolBarRoutes <|-- com.aamagon.regucars.ui.view.navigation.ToolBarRoutes$HomeScreen
+com.aamagon.regucars.ui.view.navigation.ToolBarRoutes +.. com.aamagon.regucars.ui.view.navigation.ToolBarRoutes$CarsScreen
+com.aamagon.regucars.ui.view.navigation.ToolBarRoutes <|-- com.aamagon.regucars.ui.view.navigation.ToolBarRoutes$CarsScreen
+com.aamagon.regucars.ui.view.navigation.ToolBarRoutes +.. com.aamagon.regucars.ui.view.navigation.ToolBarRoutes$MyProfileScreen
+com.aamagon.regucars.ui.view.navigation.ToolBarRoutes <|-- com.aamagon.regucars.ui.view.navigation.ToolBarRoutes$MyProfileScreen
+com.aamagon.regucars.ui.view.navigation.ToolBarRoutes +.. com.aamagon.regucars.ui.view.navigation.ToolBarRoutes$FiltersScreen
+com.aamagon.regucars.ui.view.navigation.ToolBarRoutes <|-- com.aamagon.regucars.ui.view.navigation.ToolBarRoutes$FiltersScreen
+@enduml
