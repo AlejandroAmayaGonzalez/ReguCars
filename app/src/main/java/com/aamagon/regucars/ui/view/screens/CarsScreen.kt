@@ -59,7 +59,7 @@ fun CarsScreen(navController: NavController, carsViewModel: CarsViewModel, state
                 .background(BackgroundColor).fillMaxSize()
         )
 
-        var loading = carsViewModel.isLoading.observeAsState(false)
+        val loading = carsViewModel.isLoading.observeAsState(false)
         if (loading.value){
             Column (
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -70,7 +70,7 @@ fun CarsScreen(navController: NavController, carsViewModel: CarsViewModel, state
             }
         }
 
-        var noMatches = carsViewModel.noMatches.observeAsState(false)
+        val noMatches = carsViewModel.noMatches.observeAsState(false)
         if (noMatches.value){
             Column (
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -114,7 +114,7 @@ fun CarsScreenContent(
 
 @Composable
 fun CarCard(car: Car, carsViewModel: CarsViewModel){
-    var show = remember { mutableStateOf(false) }
+    val show = remember { mutableStateOf(false) }
 
     Card (
         modifier = Modifier.clickable( onClick = { show.value = true } )
@@ -174,7 +174,7 @@ fun CarCard(car: Car, carsViewModel: CarsViewModel){
 
 @Composable
 fun FavToggleButton(car: Car, carsViewModel: CarsViewModel){
-    var isPressed = remember(car.isFavourite) { mutableStateOf(car.isFavourite) }
+    val isPressed = remember(car.isFavourite) { mutableStateOf(car.isFavourite) }
     val fav = R.drawable.icon_fav_filled_red
     val notFav = R.drawable.icon_fav_not_filled
 

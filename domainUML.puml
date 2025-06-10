@@ -1,0 +1,16 @@
+@startuml
+class com.aamagon.regucars.domain.UpdateCarUseCase {
+}
+class com.aamagon.regucars.domain.model.User {
+}
+class com.aamagon.regucars.domain.GetCarsUseCase {
+}
+class com.aamagon.regucars.domain.FiltersUseCase {
+}
+class com.aamagon.regucars.domain.model.Car {
+}
+class com.aamagon.regucars.domain.GetUserUseCase {
+}
+class com.aamagon.regucars.domain.GetFavCarsUseCase {
+}
+@enduml

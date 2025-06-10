@@ -1,0 +1,35 @@
+@startuml
+class com.aamagon.regucars.core.di.RetrofitModule {
++ Retrofit provideDataRetrofit()
+}
+
+class com.aamagon.regucars.core.di.RetromockModule {
++ void provideDataRetromock(void)
++ void null()
++ ApiClient provideApiClient(Retromock)
+}
+
+class com.aamagon.regucars.core.bodyFactory.AssetsBodyFactory {
++ InputStream create(String)
+}
+
+class com.aamagon.regucars.core.extensions.Converters {
++ List<String> stringForList(String)
++ String listToString(List<String>)
+}
+
+class com.aamagon.regucars.core.di.RoomModule$null {
+}
+class com.aamagon.regucars.core.di.RoomModule {
+-  DATABASE_NAME
++ void provideRoom(Context)
++ void provideCarDao(Database)
++ void provideUserDao(Database)
+}
+
+
+
+
+co.infinum.retromock.BodyFactory <|.. com.aamagon.regucars.core.bodyFactory.AssetsBodyFactory
+com.aamagon.regucars.core.di.RoomModule +.. com.aamagon.regucars.core.di.RoomModule$null
+@enduml

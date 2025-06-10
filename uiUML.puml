@@ -1,0 +1,41 @@
+@startuml
+class com.aamagon.regucars.ui.theme.Dimensions {
++  default
++  toolbarIconSize
++  titleDialog
++  contentDialog
++  filterTitle
++  thumbSize
++  cardHeight
++  cardModel
++  cardPrice
++  labelTf
+}
+
+class com.aamagon.regucars.ui.view.navigation.ToolBarRoutes$HomeScreen {
+}
+class com.aamagon.regucars.ui.view.navigation.ToolBarRoutes$CarsScreen {
+}
+class com.aamagon.regucars.ui.view.navigation.ToolBarRoutes$MyProfileScreen {
+}
+class com.aamagon.regucars.ui.view.navigation.ToolBarRoutes$FiltersScreen {
+}
+class com.aamagon.regucars.ui.view.navigation.ToolBarRoutes {
+}
+class com.aamagon.regucars.ui.viewmodel.UserViewModel {
+}
+class com.aamagon.regucars.ui.view.screens.States {
+}
+class com.aamagon.regucars.ui.viewmodel.CarsViewModel {
+}
+
+
+com.aamagon.regucars.ui.view.navigation.ToolBarRoutes +.. com.aamagon.regucars.ui.view.navigation.ToolBarRoutes$HomeScreen
+com.aamagon.regucars.ui.view.navigation.ToolBarRoutes <|-- com.aamagon.regucars.ui.view.navigation.ToolBarRoutes$HomeScreen
+com.aamagon.regucars.ui.view.navigation.ToolBarRoutes +.. com.aamagon.regucars.ui.view.navigation.ToolBarRoutes$CarsScreen
+com.aamagon.regucars.ui.view.navigation.ToolBarRoutes <|-- com.aamagon.regucars.ui.view.navigation.ToolBarRoutes$CarsScreen
+com.aamagon.regucars.ui.view.navigation.ToolBarRoutes +.. com.aamagon.regucars.ui.view.navigation.ToolBarRoutes$MyProfileScreen
+com.aamagon.regucars.ui.view.navigation.ToolBarRoutes <|-- com.aamagon.regucars.ui.view.navigation.ToolBarRoutes$MyProfileScreen
+com.aamagon.regucars.ui.view.navigation.ToolBarRoutes +.. com.aamagon.regucars.ui.view.navigation.ToolBarRoutes$FiltersScreen
+com.aamagon.regucars.ui.view.navigation.ToolBarRoutes <|-- com.aamagon.regucars.ui.view.navigation.ToolBarRoutes$FiltersScreen
+@enduml

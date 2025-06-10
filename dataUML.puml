@@ -1,0 +1,42 @@
+@startuml
+class com.aamagon.regucars.data.Repository {
+}
+class com.aamagon.regucars.data.model.CarModel {
+}
+class com.aamagon.regucars.data.network.ApiService {
+}
+class com.aamagon.regucars.data.model.DataModel {
+}
+abstract class com.aamagon.regucars.data.database.Database {
++ CarDao getCarsDao()
++ UserDao getUserDao()
+}
+
+class com.aamagon.regucars.data.database.entities.CarEntity {
+}
+interface com.aamagon.regucars.data.network.ApiClient {
++ Response<DataModel> getData()
+}
+
+class com.aamagon.regucars.data.model.UserModel {
+}
+interface com.aamagon.regucars.data.database.dao.UserDao {
++ List<UserEntity> getAllUsers()
++ void insertAllUsers(List<UserEntity>)
++ void deleteUsers()
+}
+
+class com.aamagon.regucars.data.database.entities.UserEntity {
+}
+interface com.aamagon.regucars.data.database.dao.CarDao {
++ List<CarEntity> getAllCars()
++ void insertAllCars(List<CarEntity>)
++ void deleteCars()
++ List<CarEntity> getFavCars()
++ void updateCar(CarEntity)
+}
+
+
+
+androidx.room.RoomDatabase <|-- com.aamagon.regucars.data.database.Database
+@enduml
