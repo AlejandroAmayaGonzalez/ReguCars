@@ -138,7 +138,7 @@ fun FilterButtons(navController: NavController, carsViewModel: CarsViewModel, st
 @Composable
 fun YearPicker(states: States){
     // Control the dropdown
-    var expanded = remember { mutableStateOf(false) }
+    val expanded = remember { mutableStateOf(false) }
 
     Row (
         verticalAlignment = Alignment.CenterVertically,
@@ -151,6 +151,7 @@ fun YearPicker(states: States){
                 text = if (states.selectedYear.intValue == 0)
                             stringResource(R.string.dropdownPlaceholder)
                        else states.selectedYear.intValue.toString(),
+                fontSize = Dimensions.pickerSize,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .width(120.dp)
@@ -180,7 +181,7 @@ fun YearPicker(states: States){
 @Composable
 fun ColorPicker(states: States){
     // Control the dropdown
-    var expanded = remember { mutableStateOf(false) }
+    val expanded = remember { mutableStateOf(false) }
 
     Row (
         verticalAlignment = Alignment.CenterVertically,
@@ -190,9 +191,8 @@ fun ColorPicker(states: States){
         FilterTitle(stringResource(R.string.colorFilterTitle))
         Box {
             Text(
-                text = if (states.selectedColor.value.isNotEmpty())
-                            states.selectedColor.value
-                       else stringResource(R.string.dropdownPlaceholder),
+                text = states.selectedColor.value.ifEmpty { stringResource(R.string.dropdownPlaceholder) },
+                fontSize = Dimensions.pickerSize,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .width(120.dp)

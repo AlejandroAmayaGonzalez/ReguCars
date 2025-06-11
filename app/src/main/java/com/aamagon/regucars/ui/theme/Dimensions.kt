@@ -18,4 +18,6 @@ object Dimensions{
     val cardPrice = 18.sp
 
     val labelTf = 15.sp
+
+    val pickerSize = 15.sp
 }
